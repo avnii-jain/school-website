@@ -359,9 +359,7 @@
               <div class="hero-pillar-item" data-target="#academics" role="button" tabindex="0"
                 title="Click to view Academics">
                 <div class="hero-pillar-media">
-                  <img
-                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=300&q=80"
-                    alt="Academic Excellence" class="hero-pillar-img" loading="lazy">
+                  <img src="assets/library.png" alt="Academic Excellence" class="hero-pillar-img" loading="lazy">
                 </div>
                 <div class="hero-pillar-text">
                   <span class="pillar-tag">✦ Intellect</span>
@@ -379,9 +377,8 @@
               <div class="hero-pillar-item" data-target="#about" role="button" tabindex="0"
                 title="Click to view Values & Heritage">
                 <div class="hero-pillar-media">
-                  <img
-                    src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=300&q=80"
-                    alt="Character and Ethics" class="hero-pillar-img" loading="lazy">
+                  <img src="assets/school-classrooms.jpg" alt="Character and Ethics" class="hero-pillar-img"
+                    loading="lazy">
                 </div>
                 <div class="hero-pillar-text">
                   <span class="pillar-tag">✦ Integrity</span>
@@ -399,9 +396,8 @@
               <div class="hero-pillar-item" data-target="#facilities" role="button" tabindex="0"
                 title="Click to view Modern Campus">
                 <div class="hero-pillar-media">
-                  <img
-                    src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=300&q=80"
-                    alt="Modern Campus and STEM Labs" class="hero-pillar-img" loading="lazy">
+                  <img src="assets/school-grounds.jpg" alt="Modern Campus and STEM Labs" class="hero-pillar-img"
+                    loading="lazy">
                 </div>
                 <div class="hero-pillar-text">
                   <span class="pillar-tag">✦ Innovation</span>
@@ -419,8 +415,7 @@
               <div class="hero-pillar-item" data-target="#highlights" role="button" tabindex="0"
                 title="Click to view Student Life">
                 <div class="hero-pillar-media">
-                  <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=300&q=80"
-                    alt="Holistic Well-being" class="hero-pillar-img" loading="lazy">
+                  <img src="assets/school-labs.jpg" alt="Holistic Well-being" class="hero-pillar-img" loading="lazy">
                 </div>
                 <div class="hero-pillar-text">
                   <span class="pillar-tag">✦ Flourish</span>
@@ -458,9 +453,7 @@
               <div class="hero-pillar-item" data-target="#gallery" role="button" tabindex="0"
                 title="Click to view Arts and Gallery">
                 <div class="hero-pillar-media">
-                  <img
-                    src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=300&q=80"
-                    alt="Creative Arts Studio" class="hero-pillar-img" loading="lazy">
+                  <img src="assets/school-craft.webp" alt="Creative Arts Studio" class="hero-pillar-img" loading="lazy">
                 </div>
                 <div class="hero-pillar-text">
                   <span class="pillar-tag">✦ Creativity</span>
@@ -1472,7 +1465,8 @@
 
         <!-- Photo 7: Events -->
         <div class="gallery-item" data-category="events" data-title="Annual School Day & Honors">
-          <img src="assets/school-awards.jpg" alt="School Celebration and Awards" loading="lazy">
+          <img src="assets/school-awards.jpg" alt="School Celebration and Awards" class="img-awards" loading="lazy"
+            style="object-position: center 6%;">
           <div class="gallery-zoom-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"></circle>
@@ -1505,10 +1499,8 @@
         </div>
 
         <!-- Photo 9: Campus / Student Life & Heritage Courtyard -->
-        <div class="gallery-item gallery-item-emerald" data-category="campus"
-          data-title="Student Life & Heritage Courtyard">
-          <span class="gallery-mint-badge">Campus Life</span>
-          <img src="assets/why-choose-us.jpg" alt="Students in Heritage Campus Courtyard" loading="lazy">
+        <div class="gallery-item" data-category="campus" data-title="Student Life & Heritage Courtyard">
+          <img src="assets/school-campus.avif" alt="Students in Heritage Campus Courtyard" loading="lazy">
           <div class="gallery-zoom-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="8"></circle>
@@ -1519,7 +1511,7 @@
           </div>
           <div class="gallery-item-overlay">
             <span class="gallery-item-category">Campus & Community</span>
-            <h4 class="gallery-item-title">Student Life & Heritage Courtyard</h4>
+            <h4 class="gallery-item-title">Student Lift & Heritage Courtyard</h4>
           </div>
         </div>
       </div>
@@ -2198,119 +2190,194 @@
     </div>
   </div>
 
-  <!-- =========================================================================
-       INSTITUTIONAL ACCREDITATION & ACADEMIC EXCELLENCE CITATION CARD
-       ========================================================================= -->
+  <!-- DYNAMIC ANNOUNCEMENT & CITATION POPUP CAROUSEL (LOOPING 2 CARDS) -->
   <div class="welcome-modal-overlay" id="bestSchoolModalOverlay" role="dialog" aria-modal="true"
-    aria-labelledby="bestSchoolModalTitle">
-    <div class="welcome-card-dialog citation-card citation-card-split">
-      <!-- Subtle Ambient Glow -->
-      <div class="citation-ambient-glow"></div>
+    aria-labelledby="modalPosterTitle1">
 
-      <!-- Close Button -->
-      <button class="welcome-card-close" id="closeBestSchoolCardBtn" aria-label="Close Announcement">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+    <div class="poster-modal-container" id="posterModalContainer">
+      <!-- Floating Red Circular Close Button (top-right as in screenshot) -->
+      <button class="poster-modal-close" id="closeBestSchoolCardBtn" aria-label="Close Announcement">
+        ✕
       </button>
 
-      <!-- Left Column: Visual Media Showcase -->
-      <div class="citation-media-col">
-        <div class="citation-media-frame">
-          <img src="assets/school-awards.jpg" alt="Students with National Academic Excellence Award"
-            class="citation-media-img">
-          <div class="citation-media-overlay"></div>
+      <!-- Prev & Next Arrows (matching screenshot) -->
+      <button class="poster-nav-btn poster-prev" id="posterPrevBtn" aria-label="Previous Slide">
+        ❮
+      </button>
+      <button class="poster-nav-btn poster-next" id="posterNextBtn" aria-label="Next Slide">
+        ❯
+      </button>
 
-          <!-- Top Honor Pill -->
-          <div class="citation-honor-pill">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-              <polygon
-                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-              </polygon>
-            </svg>
-            <span>ACCREDITED #1 RANK</span>
+      <!-- Slides Track -->
+      <div class="poster-slides-viewport">
+        <div class="poster-slides-track" id="posterSlidesTrack">
+
+          <!-- ==================== CARD 1: ADMISSIONS POSTER ==================== -->
+          <div class="poster-slide active" data-slide-index="0">
+            <div class="poster-card poster-card-admissions">
+
+              <!-- Header Bar with School Logo & Name -->
+              <div class="poster-header-bar">
+                <div class="poster-brand">
+                  <div class="poster-crest">
+                    <img src="assets/favicon.svg" alt="Aryan Heritage School Crest" width="28" height="28">
+                  </div>
+                  <div class="poster-brand-text">
+                    <span class="poster-brand-name">ARYAN HERITAGE</span>
+                    <span class="poster-brand-sub">PUBLIC SCHOOL</span>
+                  </div>
+                </div>
+                <div class="poster-header-tag">
+                  <span>ADMISSIONS 2026–27</span>
+                </div>
+              </div>
+
+              <!-- Main Visual & Typography Section -->
+              <div class="poster-content-area">
+                <!-- Left/Floating Poster Graphics & Headings -->
+                <div class="poster-copy-box">
+                  <div class="poster-badge-yellow">
+                    <span>SMALL STEPS</span>
+                  </div>
+                  <h2 class="poster-headline-white" id="modalPosterTitle1">
+                    BIG DREAMS
+                  </h2>
+                  <div class="poster-script-yellow">
+                    Let Their Journey Begin
+                  </div>
+                </div>
+
+                <!-- Featured Hero Student Illustration -->
+                <div class="poster-hero-image-wrap">
+                  <img src="assets/admission-poster-boy.jpg" alt="Student Reaching for Big Dreams"
+                    class="poster-hero-img">
+                </div>
+
+                <!-- Floating Doodles / Rocket Accent -->
+                <div class="poster-rocket-badge">
+                  <span class="rocket-icon">🚀</span>
+                </div>
+              </div>
+
+              <!-- Ribbon Banner -->
+              <div class="poster-ribbon-bar">
+                <span>CONFIDENCE</span>
+                <span class="poster-ribbon-dot">•</span>
+                <span>CREATIVITY</span>
+                <span class="poster-ribbon-dot">•</span>
+                <span>GROWTH</span>
+              </div>
+
+              <!-- Bottom Gold Strip Contact Bar -->
+              <div class="poster-footer-strip">
+                <div class="poster-contact-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z" />
+                  </svg>
+                  <span>+91 98765 43210</span>
+                </div>
+                <div class="poster-contact-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+                    <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"
+                      fill="none" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                  <span>aryanheritage.edu.in</span>
+                </div>
+                <a href="#admissions" class="poster-cta-btn" id="welcomeAdmissionsBtn">
+                  <span>Enquire Now →</span>
+                </a>
+              </div>
+
+            </div>
           </div>
 
-          <!-- Bottom Floating Badge with Crest & Citation Year -->
-          <div class="citation-seal-pill">
-            <div class="citation-crest-mini">
-              <img src="assets/favicon.svg" alt="AHS Crest" width="22" height="22">
-            </div>
-            <div class="citation-seal-text">
-              <strong>National Excellence Citation</strong>
-              <span>Session 2026–2027</span>
+          <!-- ==================== CARD 2: EXCELLENCE CITATION POSTER ==================== -->
+          <div class="poster-slide" data-slide-index="1">
+            <div class="poster-card poster-card-awards">
+
+              <!-- Header Bar with Crest & Accreditation Seal -->
+              <div class="poster-header-bar">
+                <div class="poster-brand">
+                  <div class="poster-crest">
+                    <img src="assets/favicon.svg" alt="Aryan Heritage School Crest" width="28" height="28">
+                  </div>
+                  <div class="poster-brand-text">
+                    <span class="poster-brand-name">ARYAN HERITAGE</span>
+                    <span class="poster-brand-sub">NATIONAL CITATION</span>
+                  </div>
+                </div>
+                <div class="poster-header-tag poster-tag-gold">
+                  <span>ANNUAL RANKING 2026–27</span>
+                </div>
+              </div>
+
+              <!-- Main Visual & Typography Section -->
+              <div class="poster-content-area">
+                <!-- Left/Floating Poster Graphics & Headings -->
+                <div class="poster-copy-box">
+                  <div class="poster-badge-yellow poster-badge-amber">
+                    <span>CONFERRED #1 RANK</span>
+                  </div>
+                  <h2 class="poster-headline-white">
+                    ACADEMIC EXCELLENCE
+                  </h2>
+                  <div class="poster-script-yellow poster-script-gold">
+                    Shaping Tomorrow's Leaders
+                  </div>
+                </div>
+
+                <!-- Featured Hero Students with Trophy Illustration -->
+                <div class="poster-hero-image-wrap">
+                  <img src="assets/school-awards.jpg" alt="Students with Academic Excellence Trophy"
+                    class="poster-hero-img poster-hero-awards">
+                </div>
+
+                <!-- Floating Trophy Accent Badge -->
+                <div class="poster-rocket-badge poster-trophy-badge">
+                  <span class="rocket-icon">🏆</span>
+                </div>
+              </div>
+
+              <!-- Ribbon Banner -->
+              <div class="poster-ribbon-bar poster-ribbon-gold">
+                <span>100% DISTINCTIONS</span>
+                <span class="poster-ribbon-dot">•</span>
+                <span>12-ACRE CAMPUS</span>
+                <span class="poster-ribbon-dot">•</span>
+                <span>15:1 MENTORSHIP</span>
+              </div>
+
+              <!-- Bottom Gold Strip Contact Bar -->
+              <div class="poster-footer-strip poster-footer-gold">
+                <div class="poster-contact-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                  <span>Accredited Honor</span>
+                </div>
+                <div class="poster-contact-item citation-quote-mini">
+                  <span>“The benchmark in modern K-12 education”</span>
+                </div>
+                <a href="#about" class="poster-cta-btn poster-cta-gold" id="welcomeExploreBtn">
+                  <span>Explore Vision →</span>
+                </a>
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
 
-      <!-- Right Column: Editorial Citation Body -->
-      <div class="citation-content-col">
-        <div class="citation-header">
-          <div class="citation-eyebrow">
-            <span class="citation-star">★</span>
-            <span>NATIONAL EDUCATION ALLIANCE</span>
-            <span class="citation-dot">•</span>
-            <span>ANNUAL CITATION</span>
-            <span class="citation-star">★</span>
-          </div>
-          <h3 class="citation-title" id="bestSchoolModalTitle">
-            Conferred <span class="citation-gold">#1 Ranking</span> in Holistic Academic Excellence
-          </h3>
-          <p class="citation-lead">
-            Officially recognized as the region's benchmark institution for values-rooted curriculum rigor, university
-            preparedness, and exceptional student mentorship.
-          </p>
-        </div>
-
-        <!-- Verified Metric Pillars (Regal Ivory & Gold) -->
-        <div class="citation-metrics-row">
-          <div class="citation-metric-col">
-            <div class="citation-stat-number">100%</div>
-            <div class="citation-stat-label">Board Distinctions</div>
-            <div class="citation-stat-desc">CBSE & Global Placements</div>
-          </div>
-          <div class="citation-metric-col">
-            <div class="citation-stat-number">12-Acre</div>
-            <div class="citation-stat-label">Smart Eco-Campus</div>
-            <div class="citation-stat-desc">Advanced STEM & Innovation Labs</div>
-          </div>
-          <div class="citation-metric-col">
-            <div class="citation-stat-number">15 : 1</div>
-            <div class="citation-stat-label">Mentorship Ratio</div>
-            <div class="citation-stat-desc">Personalized Guidance</div>
-          </div>
-        </div>
-
-        <!-- Official Council Endorsement Ribbon -->
-        <div class="citation-endorsement-bar">
-          <div class="citation-verified-tag">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            <span>ACCREDITED HONOR</span>
-          </div>
-          <div class="citation-quote-text">
-            “The benchmark in modern values-based K-12 education.”
-          </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="welcome-card-actions">
-          <a href="#about" class="welcome-action-btn welcome-btn-primary" id="welcomeExploreBtn">
-            <span>Explore School Vision</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </a>
-          <a href="#admissions" class="welcome-action-btn welcome-btn-secondary" id="welcomeAdmissionsBtn">
-            <span>Admissions 2026–27</span>
-          </a>
-        </div>
+      <!-- Bottom Carousel Dots Indicator -->
+      <div class="poster-dots" id="posterDots">
+        <button class="poster-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+        <button class="poster-dot" data-slide="1" aria-label="Go to slide 2"></button>
       </div>
+
     </div>
   </div>
 

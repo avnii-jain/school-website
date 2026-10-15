@@ -1805,6 +1805,12 @@ input, select, textarea {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.gallery-item img[src*="school-awards"],
+.gallery-item img.img-awards,
+.gallery-item[data-title*="Honors"] img {
+  object-position: center 6%;
+}
+
 .gallery-item:hover img {
   transform: scale(1.1);
 }
@@ -3728,393 +3734,539 @@ input, select, textarea {
 }
 
 /* ==========================================================================
-   Citation Card: Regal Ivory & Gold (Side-by-Side Split UI)
+   Announcement & Citation Poster Modal Carousel (Looping 2 Cards)
    ========================================================================== */
-.citation-card {
+.poster-modal-container {
   position: relative;
-  max-width: 860px;
-  width: 100%;
-  max-height: calc(100dvh - 40px);
-  max-height: calc(100vh - 40px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
+  max-width: 480px;
+  width: calc(100% - 28px);
   margin: auto;
-  background: linear-gradient(145deg, #ffffff 0%, #fdfcf9 45%, #f7f3ec 100%);
-  border: 1.5px solid rgba(212, 175, 55, 0.55);
-  border-radius: 22px;
-  padding: 0;
-  box-shadow: 0 30px 80px rgba(11, 25, 48, 0.28), 0 0 50px rgba(212, 175, 55, 0.2);
-  color: #1e293b;
+  border: 4px solid #ffffff;
+  border-radius: 26px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(2, 82, 180, 0.35);
+  background: #0252b4;
+  overflow: visible;
   transform: translateY(20px) scale(0.96);
-  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 310px 1fr;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
 }
 
-.welcome-modal-overlay.active .citation-card {
+.welcome-modal-overlay.active .poster-modal-container {
   transform: translateY(0) scale(1);
 }
 
-.citation-ambient-glow {
+/* Floating Red Circular Close Button matching user screenshot */
+.poster-modal-close {
   position: absolute;
-  top: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 420px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
-  filter: blur(40px);
+  top: -16px;
+  right: -16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ef4444;
+  border: 3.5px solid #ffffff;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 60;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, background 0.25s ease;
+  line-height: 1;
+}
+
+.poster-modal-close:hover {
+  background: #dc2626;
+  transform: scale(1.12) rotate(90deg);
+}
+
+/* Navigation Arrow Buttons matching user screenshot */
+.poster-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 45;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  line-height: 1;
+}
+
+.poster-prev {
+  left: 12px;
+}
+
+.poster-next {
+  right: 12px;
+}
+
+.poster-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: #ffffff;
+  transform: translateY(-50%) scale(1.12);
+}
+
+/* Slides Viewport & Track */
+.poster-slides-viewport {
+  position: relative;
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  min-height: 570px;
+}
+
+.poster-slides-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.poster-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.96) translateX(20px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.55s;
   pointer-events: none;
 }
 
-/* Minimalist Clean Close Button */
-.welcome-card-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(11, 25, 48, 0.06);
-  border: 1px solid rgba(11, 25, 48, 0.12);
-  color: #475569;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  z-index: 10;
-}
-
-.welcome-card-close:hover {
-  background: #0b1930;
-  border-color: #0b1930;
-  color: #ffffff;
-  transform: rotate(90deg);
-}
-
-/* Left Column: Visual Media Showcase */
-.citation-media-col {
+.poster-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateX(0);
+  pointer-events: auto;
   position: relative;
-  background: #071329;
-  overflow: hidden;
+}
+
+/* Card Shell */
+.poster-card {
   display: flex;
   flex-direction: column;
-}
-
-.citation-media-frame {
+  width: 100%;
+  min-height: 570px;
+  color: #ffffff;
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 440px;
+  overflow: hidden;
+  user-select: none;
 }
 
-.citation-media-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.poster-card-admissions {
+  background: radial-gradient(circle at 75% 30%, #1e70e6 0%, #0252b4 40%, #003e8a 85%, #002c66 100%);
 }
 
-.citation-card:hover .citation-media-img {
-  transform: scale(1.04);
+.poster-card-awards {
+  background: radial-gradient(circle at 75% 30%, #173673 0%, #0b1d47 40%, #071330 85%, #030a1c 100%);
 }
 
-.citation-media-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(7, 19, 41, 0.35) 0%,
-    transparent 35%,
-    rgba(7, 19, 41, 0.4) 60%,
-    rgba(7, 19, 41, 0.9) 100%
-  );
-}
-
-/* Floating Honor Pill */
-.citation-honor-pill {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  display: inline-flex;
+/* Header Bar */
+.poster-header-bar {
+  display: flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(11, 25, 48, 0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(212, 175, 55, 0.65);
-  color: #fde68a;
-  font-size: 0.6875rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-  z-index: 3;
+  justify-content: space-between;
+  padding: 18px 22px 10px 22px;
+  position: relative;
+  z-index: 15;
 }
 
-/* Floating Seal Pill at bottom of image */
-.citation-seal-pill {
-  position: absolute;
-  bottom: 16px;
-  left: 14px;
-  right: 14px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 12px;
-  padding: 8px 12px;
+.poster-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  z-index: 3;
 }
 
-.citation-crest-mini {
-  width: 32px;
-  height: 32px;
+.poster-crest {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: #0b1930;
-  border: 1.5px solid #d4af37;
+  background: #ffffff;
+  border: 2px solid #facc15;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   flex-shrink: 0;
 }
 
-.citation-crest-mini img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-
-.citation-seal-text {
+.poster-brand-text {
   display: flex;
   flex-direction: column;
 }
 
-.citation-seal-text strong {
+.poster-brand-name {
   font-family: var(--font-serif);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1.15;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.poster-brand-sub {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #fde047;
+  text-transform: uppercase;
+}
+
+.poster-header-tag {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.poster-tag-gold {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #d4af37;
+  color: #fef08a;
+}
+
+/* Poster Content Area */
+.poster-content-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 24px;
+  min-height: 350px;
+}
+
+.poster-copy-box {
+  position: relative;
+  z-index: 15;
+  margin-top: 10px;
+  max-width: 250px;
+}
+
+/* Yellow Angled Ribbon Badge */
+.poster-badge-yellow {
+  display: inline-block;
+  background: #facc15;
   color: #0b1930;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  padding: 5px 16px;
+  transform: rotate(-2.5deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.poster-badge-amber {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
+/* Bold White 3D Headline */
+.poster-headline-white {
+  font-family: var(--font-sans);
+  font-size: 2.45rem;
+  font-weight: 950;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1.02;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0 0 6px 0;
+}
+
+/* Yellow Script Subtitle */
+.poster-script-yellow {
+  font-family: 'Playfair Display', cursive, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #fde047;
   font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   line-height: 1.2;
 }
 
-.citation-seal-text span {
-  font-size: 0.6875rem;
-  color: #b45309;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+.poster-script-gold {
+  color: #fef08a;
 }
 
-/* Right Column: Editorial Citation Body */
-.citation-content-col {
-  padding: 32px 36px 28px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
+/* Hero Character Image */
+.poster-hero-image-wrap {
+  position: absolute;
+  right: -5px;
+  bottom: 0;
+  width: 280px;
+  height: 330px;
+  z-index: 10;
+  pointer-events: none;
 }
 
-.citation-header {
-  text-align: left;
-  margin-bottom: 16px;
-}
-
-.citation-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  font-weight: 800;
-  color: #b45309;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.citation-star {
-  color: #d97706;
-  font-size: 0.75rem;
-}
-
-.citation-dot {
-  opacity: 0.4;
-}
-
-.citation-title {
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: #0b1930;
-  line-height: 1.25;
-  margin-bottom: 8px;
-}
-
-.citation-gold {
-  color: #b45309;
-  background: linear-gradient(90deg, #b45309, #d97706);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-style: italic;
-}
-
-.citation-lead {
-  font-size: 0.875rem;
-  color: #475569;
-  line-height: 1.55;
-  margin: 0;
-}
-
-/* Metric Pillars (Regal Ivory & Gold) */
-.citation-metrics-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 14px;
-  margin-bottom: 16px;
-}
-
-.citation-metric-col {
-  background: #ffffff;
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 12px;
-  padding: 12px 10px;
-  text-align: center;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 10px rgba(11, 25, 48, 0.04);
-}
-
-.citation-metric-col:hover {
-  border-color: #d4af37;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.18);
-  background: #fffdfa;
-}
-
-.citation-stat-number {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #b45309;
-  line-height: 1.15;
-  margin-bottom: 4px;
-}
-
-.citation-stat-label {
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #0b1930;
-  line-height: 1.25;
-}
-
-.citation-stat-desc {
-  font-size: 0.65rem;
-  color: #64748b;
-  line-height: 1.3;
-  margin-top: 2px;
-}
-
-/* Endorsement Ribbon */
-.citation-endorsement-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  border: 1px solid rgba(217, 119, 6, 0.28);
-  border-radius: 10px;
-  padding: 9px 12px;
-  margin-bottom: 16px;
-}
-
-.citation-verified-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: #d97706;
-  color: #ffffff;
-  font-size: 0.6875rem;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 4px;
-  letter-spacing: 0.06em;
-  flex-shrink: 0;
-}
-
-.citation-quote-text {
-  font-size: 0.8rem;
-  color: #78350f;
-  font-style: italic;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-/* Action Buttons (Regal Navy & Warm Gold) */
-.welcome-card-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.poster-hero-img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.45));
 }
 
-.welcome-action-btn {
-  flex: 1 1 0;
-  width: 50%;
-  min-width: 0;
-  height: 44px;
-  min-height: 44px;
-  max-height: 44px;
-  padding: 0 14px;
-  display: inline-flex;
+.poster-hero-awards {
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center 6%;
+  width: 240px;
+  height: 250px;
+  border: 3px solid rgba(212, 175, 55, 0.7);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+}
+
+/* Floating Rocket Badge */
+.poster-rocket-badge {
+  position: absolute;
+  top: 14px;
+  right: 28px;
+  font-size: 2.4rem;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+  z-index: 12;
+  animation: floatRocketAnim 3s ease-in-out infinite alternate;
+}
+
+.poster-trophy-badge {
+  font-size: 2.2rem;
+}
+
+@keyframes floatRocketAnim {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(6deg); }
+}
+
+/* Ribbon Banner */
+.poster-ribbon-bar {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #b91c1c 100%);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 8px 14px;
+  margin: 0 16px 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 20;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.poster-ribbon-gold {
+  background: linear-gradient(90deg, #b45309 0%, #d97706 50%, #b45309 100%);
+  border: 1px solid rgba(254, 240, 138, 0.4);
+}
+
+.poster-ribbon-dot {
+  color: #facc15;
+  font-size: 0.8rem;
+}
+
+/* Bottom Gold Strip Contact Bar */
+.poster-footer-strip {
+  background: #002253;
+  border-top: 2.5px solid #facc15;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  text-align: center;
+  color: #fde047;
+  position: relative;
+  z-index: 20;
+}
+
+.poster-footer-gold {
+  background: #050e1f;
+  border-top-color: #d4af37;
+  color: #fef08a;
+}
+
+.poster-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+}
+
+.poster-contact-item.citation-quote-mini {
+  font-style: italic;
+  font-size: 0.7rem;
+  color: #e2e8f0;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.poster-cta-btn {
+  background: #facc15;
+  color: #0b1930 !important;
+  font-weight: 900;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  padding: 6px 14px;
+  border-radius: 6px;
   text-decoration: none;
   white-space: nowrap;
-  box-sizing: border-box;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  margin-left: auto;
 }
 
-.welcome-btn-primary {
-  background: linear-gradient(135deg, #0b1930 0%, #173266 100%);
-  border: 1.5px solid #0b1930;
-  color: #fde68a !important;
-  box-shadow: 0 4px 14px rgba(11, 25, 48, 0.25);
+.poster-cta-btn:hover {
+  background: #fde047;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
 }
 
-.welcome-btn-primary:hover {
-  background: linear-gradient(135deg, #0f2347 0%, #1f4287 100%);
-  border-color: #d4af37;
+.poster-cta-gold {
+  background: linear-gradient(135deg, #d4af37, #b45309);
   color: #ffffff !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(11, 25, 48, 0.35);
+  border: 1px solid rgba(254, 240, 138, 0.5);
 }
 
-.welcome-btn-secondary {
+.poster-cta-gold:hover {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff !important;
+}
+
+/* Bottom Carousel Dots Indicator */
+.poster-dots {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 50;
+}
+
+.poster-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.poster-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.poster-dot.active {
+  width: 28px;
+  border-radius: 9999px;
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
-  color: #0b1930 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
 }
 
-.welcome-btn-secondary:hover {
-  background: #f8fafc;
-  border-color: #0b1930;
-  color: #0b1930 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(11, 25, 48, 0.12);
+/* Mobile Media Queries */
+@media (max-width: 640px) {
+  .poster-modal-container {
+    max-width: 360px;
+    border-width: 3px;
+    border-radius: 20px;
+  }
+
+  .poster-modal-close {
+    top: -12px;
+    right: -12px;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    border-width: 2.5px;
+  }
+
+  .poster-nav-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .poster-prev {
+    left: 6px;
+  }
+
+  .poster-next {
+    right: 6px;
+  }
+
+  .poster-slides-viewport,
+  .poster-card {
+    min-height: 500px;
+  }
+
+  .poster-headline-white {
+    font-size: 1.95rem;
+  }
+
+  .poster-badge-yellow {
+    font-size: 1.05rem;
+    padding: 3px 12px;
+  }
+
+  .poster-script-yellow {
+    font-size: 1.05rem;
+  }
+
+  .poster-hero-image-wrap {
+    width: 220px;
+    height: 270px;
+  }
+
+  .poster-hero-awards {
+    width: 190px;
+    height: 210px;
+  }
+
+  .poster-footer-strip {
+    font-size: 0.68rem;
+    padding: 8px 12px;
+  }
+
+  .poster-contact-item:nth-child(2) {
+    display: none;
+  }
+
+  .poster-ribbon-bar {
+    font-size: 0.68rem;
+    padding: 6px 10px;
+    margin: 0 10px 8px 10px;
+  }
 }
 
 /* Docked Re-open Floating Pill (Bottom-Left) */

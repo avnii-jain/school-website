@@ -1076,15 +1076,85 @@ function initBestSchoolWelcomeCard() {
 
   if (!overlay) return;
 
+  const slides = overlay.querySelectorAll(".poster-slide");
+  const dots = overlay.querySelectorAll(".poster-dot");
+  const prevBtn = document.getElementById("posterPrevBtn");
+  const nextBtn = document.getElementById("posterNextBtn");
+  const container = document.getElementById("posterModalContainer");
+  let currentSlide = 0;
+  let loopInterval = null;
+
+  function goToSlide(index) {
+    if (slides.length === 0) return;
+    currentSlide = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === currentSlide);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentSlide);
+    });
+  }
+
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+
+  function startLoop() {
+    stopLoop();
+    loopInterval = setInterval(nextSlide, 4500);
+  }
+
+  function stopLoop() {
+    if (loopInterval) {
+      clearInterval(loopInterval);
+      loopInterval = null;
+    }
+  }
+
   function openCard() {
     overlay.classList.add("active");
     document.body.style.overflow = "hidden";
+    goToSlide(0);
+    startLoop();
   }
 
   function closeCard() {
     overlay.classList.remove("active");
     document.body.style.overflow = "";
+    stopLoop();
   }
+
+  nextBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    nextSlide();
+    startLoop();
+  });
+
+  prevBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    prevSlide();
+    startLoop();
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goToSlide(i);
+      startLoop();
+    });
+  });
+
+  // Pause loop when user hovers over modal card
+  container?.addEventListener("mouseenter", stopLoop);
+  container?.addEventListener("mouseleave", () => {
+    if (overlay.classList.contains("active")) {
+      startLoop();
+    }
+  });
 
   // Smooth appearance 650ms after user opens the site
   setTimeout(() => {
