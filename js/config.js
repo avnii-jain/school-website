@@ -12,7 +12,7 @@ const SCHOOL_CONFIG = {
   schoolShortName: "AHS",
   motto: "Building Bright Minds. Shaping Tomorrow.",
   tagline: "Where knowledge meets values, curiosity inspires learning, and every child reaches their potential.",
-  
+
   // Location & Map Configuration (Official Verified Location)
   location: {
     isDemo: false,
@@ -21,16 +21,16 @@ const SCHOOL_CONFIG = {
     addressLine2: "Roshanabad, Aneki Hetmapur, Uttarakhand",
     fullAddress: "Roshanabad - Hetampur - Anneki - Aurangabad Rd, Roshanabad, Aneki Hetmapur, Uttarakhand",
     landmark: "Roshanabad - Hetampur - Anneki - Aurangabad Road Corridor",
-    
+
     // Direct Google Maps Embed URL pointing precisely to Aryan Heritage School, Roshanabad
     mapEmbedUrl: "https://maps.google.com/maps?q=Aryan+Heritage+School,+Roshanabad+-+Hetampur+-+Anneki+-+Aurangabad+Rd,+Roshanabad,+Aneki+Hetmapur,+Uttarakhand&t=&z=16&ie=UTF8&iwloc=&output=embed",
-    
+
     // Official direct Google Maps URL
     googleMapsLink: "https://maps.google.com/maps?cid=15473775087595393311&q=Aryan+Heritage+School,+Roshanabad+-+Hetampur+-+Anneki+-+Aurangabad+Rd,+Roshanabad,+Aneki+Hetmapur,+Uttarakhand",
-    
+
     // Direct link for "Get Directions"
     directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=Aryan+Heritage+School,+Roshanabad+-+Hetampur+-+Anneki+-+Aurangabad+Rd,+Roshanabad,+Aneki+Hetmapur,+Uttarakhand",
-    
+
     visitingHours: "Monday – Saturday: 8:30 AM – 3:30 PM",
     admissionsOfficeHours: "Monday – Friday: 9:00 AM – 4:00 PM (Saturday by appointment)"
   },
@@ -105,7 +105,7 @@ const SCHOOL_CONFIG = {
 
   // Admissions Settings
   admissions: {
-    academicYear: "2025 – 2026",
+    academicYear: "2026 – 2027",
     statusText: "Admissions Open for Select Grades",
     isDemoForm: true
   }

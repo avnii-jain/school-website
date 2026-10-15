@@ -149,7 +149,7 @@ function initModals() {
 
   modalOverlays.forEach((overlay) => {
     const closeBtn = overlay.querySelector(".modal-close-btn");
-    
+
     // Close on backdrop click
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) {
@@ -269,7 +269,7 @@ const DEFAULT_SCHOOL_NOTICES = [
   },
   {
     id: "n-4",
-    title: "Admissions Open for Academic Session 2025–26",
+    title: "Admissions Open for Academic Session 2026–27",
     category: "General",
     priority: "Urgent",
     date: "01 Oct 2026",
