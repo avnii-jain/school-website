@@ -2911,119 +2911,140 @@ input, select, textarea {
     justify-content: center;
   }
 
-  /* Welcome Spotlight Card on Mobile */
+  /* Welcome Spotlight Card on Mobile (Shortened, Clean & Compact) */
   .welcome-modal-overlay {
-    padding: 14px 10px;
-    align-items: flex-start;
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
   }
 
   .welcome-card-dialog {
-    margin: auto 0;
-    max-height: calc(100dvh - 24px);
-    max-height: calc(100vh - 24px);
-    padding: 22px 16px 16px 16px;
-    border-radius: 16px;
+    margin: 0 auto;
+    width: calc(100% - 16px);
+    max-width: 360px;
+    padding: 20px 16px 14px 16px;
+    border-radius: 18px;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 30px rgba(245, 158, 11, 0.22);
   }
 
   .welcome-card-close {
-    top: 10px;
-    right: 10px;
-    width: 32px;
-    height: 32px;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .welcome-card-close svg {
+    width: 14px;
+    height: 14px;
   }
 
   .welcome-card-header {
-    margin-bottom: 12px;
-  }
-
-  .best-school-crown-wrap {
     margin-bottom: 6px;
   }
 
+  .best-school-crown-wrap {
+    margin-bottom: 2px;
+  }
+
   .best-school-trophy {
-    font-size: 2.1rem;
+    font-size: 1.75rem;
+  }
+
+  .crown-sparkle {
+    font-size: 0.75rem;
   }
 
   .best-school-award-tag {
-    font-size: 0.65rem;
-    padding: 3px 10px;
-    margin-bottom: 8px;
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    margin-bottom: 6px;
     letter-spacing: 0.04em;
   }
 
   .welcome-card-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     line-height: 1.25;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
+  /* Completely hide lengthy 4-line description to keep card short */
   .welcome-card-subtitle {
-    font-size: 0.8rem;
-    line-height: 1.45;
-    margin-bottom: 12px;
+    display: none !important;
   }
 
+  /* 3 Awards in a single neat compact row */
   .welcome-pillars-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 6px;
+    margin-top: 10px;
     margin-bottom: 12px;
   }
 
   .welcome-pillar-item {
-    padding: 8px 4px;
+    padding: 7px 3px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
   }
 
   .welcome-pillar-icon {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 2px;
   }
 
   .welcome-pillar-info h5 {
-    font-size: 0.72rem;
+    font-size: 0.6875rem;
     font-weight: 700;
     margin-bottom: 0;
-    line-height: 1.2;
+    line-height: 1.15;
     color: var(--color-white);
   }
 
   .welcome-pillar-info p {
-    display: none; /* Hide multi-line text on mobile so 3 badges fit in 1 clean row */
+    display: none !important;
   }
 
+  /* Completely hide redundant quote bar to keep card short */
   .welcome-accreditation-bar {
-    padding: 6px 10px;
-    margin-bottom: 12px;
-    gap: 6px;
+    display: none !important;
   }
 
-  .accreditation-badge {
-    font-size: 0.625rem;
-    padding: 2px 6px;
-  }
-
-  .accreditation-quote {
-    font-size: 0.72rem;
-  }
-
+  /* Compact side-by-side action buttons */
   .welcome-card-actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
   .welcome-action-btn {
-    width: 100%;
-    padding: 10px 14px;
-    font-size: 0.8125rem;
+    flex: 1;
+    padding: 9px 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .welcome-action-btn svg {
+    width: 12px;
+    height: 12px;
   }
 
   .welcome-card-footer-note {
-    font-size: 0.68rem;
+    font-size: 0.625rem;
+    margin-top: 2px;
   }
 
   .best-school-floating-badge {
