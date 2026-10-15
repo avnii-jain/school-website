@@ -1779,7 +1779,7 @@ input, select, textarea {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -1854,6 +1854,69 @@ input, select, textarea {
   align-items: center;
   justify-content: center;
   color: var(--color-white);
+}
+
+/* Custom Emerald & Teal Styled Gallery Card */
+.gallery-item.gallery-item-emerald {
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+}
+
+.gallery-item.gallery-item-emerald:hover {
+  transform: translateY(-5px);
+  border-color: rgba(52, 211, 153, 0.85);
+  box-shadow: 0 14px 30px rgba(5, 150, 105, 0.3);
+}
+
+.gallery-item .gallery-mint-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+  color: #ffffff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.45);
+  border: 1px solid rgba(167, 243, 208, 0.45);
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item.gallery-item-emerald:hover .gallery-mint-badge {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.6);
+}
+
+.gallery-item.gallery-item-emerald .gallery-item-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(4, 47, 46, 0.94) 0%,
+    rgba(13, 148, 136, 0.65) 55%,
+    rgba(16, 185, 129, 0.15) 100%
+  );
+}
+
+.gallery-item.gallery-item-emerald .gallery-item-category {
+  color: #6ee7b7;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.gallery-item.gallery-item-emerald .gallery-zoom-icon {
+  background-color: rgba(16, 185, 129, 0.35);
+  border: 1px solid rgba(110, 231, 183, 0.5);
+  color: #ecfdf5;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.gallery-item.gallery-item-emerald:hover .gallery-zoom-icon {
+  background-color: #059669;
+  color: #ffffff;
+  transform: scale(1.1);
 }
 
 /* Lightbox Modal */
