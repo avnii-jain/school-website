@@ -2911,32 +2911,119 @@ input, select, textarea {
     justify-content: center;
   }
 
+  /* Welcome Spotlight Card on Mobile */
+  .welcome-modal-overlay {
+    padding: 14px 10px;
+    align-items: flex-start;
+  }
+
   .welcome-card-dialog {
-    padding: 26px 18px 20px 18px;
+    margin: auto 0;
+    max-height: calc(100dvh - 24px);
+    max-height: calc(100vh - 24px);
+    padding: 22px 16px 16px 16px;
     border-radius: 16px;
   }
 
+  .welcome-card-close {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .welcome-card-header {
+    margin-bottom: 12px;
+  }
+
+  .best-school-crown-wrap {
+    margin-bottom: 6px;
+  }
+
+  .best-school-trophy {
+    font-size: 2.1rem;
+  }
+
+  .best-school-award-tag {
+    font-size: 0.65rem;
+    padding: 3px 10px;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .welcome-card-title {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .welcome-card-subtitle {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+
   .welcome-pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .welcome-pillar-item {
+    padding: 8px 4px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .welcome-pillar-icon {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+  }
+
+  .welcome-pillar-info h5 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1.2;
+    color: var(--color-white);
+  }
+
+  .welcome-pillar-info p {
+    display: none; /* Hide multi-line text on mobile so 3 badges fit in 1 clean row */
+  }
+
+  .welcome-accreditation-bar {
+    padding: 6px 10px;
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+
+  .accreditation-badge {
+    font-size: 0.625rem;
+    padding: 2px 6px;
+  }
+
+  .accreditation-quote {
+    font-size: 0.72rem;
   }
 
   .welcome-card-actions {
+    display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 10px;
   }
 
   .welcome-action-btn {
     width: 100%;
-  }
-
-  .welcome-card-title {
-    font-size: 1.3rem;
-  }
-
-  .welcome-card-subtitle {
+    padding: 10px 14px;
     font-size: 0.8125rem;
+  }
+
+  .welcome-card-footer-note {
+    font-size: 0.68rem;
   }
 
   .best-school-floating-badge {
@@ -3087,7 +3174,7 @@ input, select, textarea {
 .welcome-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(5, 12, 24, 0.78);
+  background-color: rgba(5, 12, 24, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 2500;
@@ -3095,9 +3182,11 @@ input, select, textarea {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
 .welcome-modal-overlay.active {
@@ -3109,15 +3198,20 @@ input, select, textarea {
   position: relative;
   max-width: 580px;
   width: 100%;
+  max-height: calc(100dvh - 36px);
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  margin: auto;
   background: linear-gradient(150deg, #0c1b33 0%, #0f2447 50%, #091529 100%);
   border: 1.5px solid rgba(245, 158, 11, 0.45);
   border-radius: 20px;
-  padding: 38px 34px 28px 34px;
+  padding: 36px 32px 26px 32px;
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), 0 0 50px rgba(245, 158, 11, 0.22);
   color: var(--color-slate-200);
-  transform: translateY(28px) scale(0.94);
-  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-  overflow: hidden;
+  transform: translateY(24px) scale(0.95);
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
 }
 
 .welcome-modal-overlay.active .welcome-card-dialog {
@@ -3382,26 +3476,4 @@ input, select, textarea {
 
 .badge-trophy-icon {
   font-size: 1.05rem;
-}
-
-@media (max-width: 640px) {
-  .welcome-card-dialog {
-    padding: 28px 20px 20px 20px;
-  }
-  .welcome-pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .welcome-card-actions {
-    flex-direction: column;
-  }
-  .welcome-card-title {
-    font-size: 1.35rem;
-  }
-  .best-school-floating-badge {
-    bottom: 20px;
-    left: 16px;
-    padding: 7px 12px;
-    font-size: 0.75rem;
-  }
 }
