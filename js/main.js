@@ -72,6 +72,7 @@ function initNavbar() {
   const navbar = document.querySelector(".navbar-wrapper");
   const mobileToggle = document.getElementById("mobileToggle");
   const mobileDrawer = document.getElementById("mobileDrawer");
+  const mobileDrawerClose = document.getElementById("mobileDrawerClose");
   const mobileBackdrop = document.getElementById("mobileBackdrop");
   const mobileLinks = document.querySelectorAll(".mobile-nav-link");
 
@@ -95,6 +96,7 @@ function initNavbar() {
   }
 
   mobileToggle?.addEventListener("click", () => toggleMobileMenu());
+  mobileDrawerClose?.addEventListener("click", () => toggleMobileMenu(false));
   mobileBackdrop?.addEventListener("click", () => toggleMobileMenu(false));
 
   mobileLinks.forEach((link) => {

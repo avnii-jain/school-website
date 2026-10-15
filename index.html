@@ -113,32 +113,160 @@
   <!-- Mobile Menu Drawer & Backdrop -->
   <div class="mobile-backdrop" id="mobileBackdrop"></div>
   <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation Drawer">
-    <div>
-      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 28px;">
-        <img src="assets/favicon.svg" alt="AHS Crest" width="44" height="44">
+    <!-- Drawer Header with School Branding & Close Cross Button -->
+    <div class="mobile-drawer-header">
+      <div class="mobile-drawer-brand">
+        <img src="assets/favicon.svg" alt="AHS Crest" width="40" height="40" class="drawer-crest">
         <div>
-          <div
-            style="font-family: var(--font-display); font-weight: 700; color: var(--color-navy-900); font-size: 1.05rem;">
-            ARYAN HERITAGE</div>
-          <div style="font-size: 0.6875rem; color: var(--color-gold-500); letter-spacing: 0.1em; font-weight: 600;">
-            SCHOOL</div>
+          <div class="drawer-brand-name">ARYAN HERITAGE</div>
+          <div class="drawer-brand-sub">SCHOOL</div>
         </div>
       </div>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Quick Award Badge -->
+    <div class="drawer-award-pill">
+      <span class="drawer-award-icon">🏆</span>
+      <span>Ranked #1 School in Holistic Excellence</span>
+    </div>
+
+    <!-- Scrollable Nav Links with Icons -->
+    <div class="mobile-drawer-body">
       <ul class="mobile-nav-links">
-        <li><a href="#home" class="mobile-nav-link">Home</a></li>
-        <li><a href="#about" class="mobile-nav-link">About Us</a></li>
-        <li><a href="#notices" class="mobile-nav-link">Notice Board</a></li>
-        <li><a href="#academics" class="mobile-nav-link">Academics</a></li>
-        <li><a href="#facilities" class="mobile-nav-link">Facilities</a></li>
-        <li><a href="#gallery" class="mobile-nav-link">Campus Gallery</a></li>
-        <li><a href="#admissions" class="mobile-nav-link">Admissions</a></li>
-        <li><a href="#location" class="mobile-nav-link">Find Our School</a></li>
+        <li>
+          <a href="#home" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </span>
+            <span class="mobile-nav-text">Home</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </span>
+            <span class="mobile-nav-text">About Us</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#notices" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </span>
+            <span class="mobile-nav-text">Notice Board</span>
+            <span class="drawer-badge-pill">New</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#academics" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </span>
+            <span class="mobile-nav-text">Academics</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#facilities" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+            </span>
+            <span class="mobile-nav-text">Facilities</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#gallery" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </span>
+            <span class="mobile-nav-text">Campus Gallery</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#admissions" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </span>
+            <span class="mobile-nav-text">Admissions</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#location" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </span>
+            <span class="mobile-nav-text">Find Our School</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
       </ul>
     </div>
-    <div>
-      <a href="#admissions" class="btn btn-primary" style="width: 100%; margin-bottom: 12px;">Enquire Now</a>
-      <div style="font-size: 0.75rem; color: var(--color-slate-400); text-align: center;">Demo Project Preview for
-        Client Review</div>
+
+    <!-- Drawer Footer with CTAs & Quick Info -->
+    <div class="mobile-drawer-footer">
+      <a href="#admissions" class="btn btn-primary drawer-enquire-btn">
+        <span>Enquire Now</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+
+      <div class="drawer-contact-quick">
+        <a href="tel:+911234567890" class="drawer-phone-link" title="Call School Office">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          <span>+91 123 456 7890</span>
+        </a>
+        <a href="admin.html" class="drawer-admin-link">
+          <span>Admin Portal</span>
+        </a>
+      </div>
+      <div class="drawer-preview-note">Demo Presentation for School Client Review</div>
     </div>
   </aside>
 
