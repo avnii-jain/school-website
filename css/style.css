@@ -3321,7 +3321,7 @@ input, select, textarea {
     padding: 2px 10px !important;
   }
 
-  /* Welcome Spotlight Card on Mobile (Shortened, Clean & Compact) */
+  /* Institutional Citation Card on Mobile (Clean, Non-Scrollable & Prestigious) */
   .welcome-modal-overlay {
     padding: 12px;
     align-items: center;
@@ -3330,15 +3330,16 @@ input, select, textarea {
     overflow-y: hidden !important;
   }
 
-  .welcome-card-dialog {
+  .citation-card {
     margin: 0 auto;
     width: calc(100% - 16px);
-    max-width: 360px;
-    padding: 20px 16px 14px 16px;
-    border-radius: 18px;
+    max-width: 350px;
+    padding: 18px 14px 14px 14px;
+    border-radius: 16px;
+    outline-offset: -5px;
     overflow: hidden !important;
     overflow-y: hidden !important;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 30px rgba(245, 158, 11, 0.22);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 24px rgba(212, 175, 55, 0.15);
   }
 
   .welcome-card-close {
@@ -3346,7 +3347,7 @@ input, select, textarea {
     right: 8px;
     width: 28px;
     height: 28px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .welcome-card-close svg {
@@ -3354,77 +3355,72 @@ input, select, textarea {
     height: 14px;
   }
 
-  .welcome-card-header {
+  .citation-header {
     margin-bottom: 6px;
   }
 
-  .best-school-crown-wrap {
-    margin-bottom: 2px;
-  }
-
-  .best-school-trophy {
-    font-size: 1.75rem;
-  }
-
-  .crown-sparkle {
-    font-size: 0.75rem;
-  }
-
-  .best-school-award-tag {
-    font-size: 0.6rem;
-    padding: 2px 8px;
+  .citation-crest-seal {
+    width: 44px;
+    height: 44px;
     margin-bottom: 6px;
-    letter-spacing: 0.04em;
   }
 
-  .welcome-card-title {
-    font-size: 1.15rem;
+  .citation-crest-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .citation-eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .citation-title {
+    font-size: 1.08rem;
     line-height: 1.25;
     margin-bottom: 4px;
   }
 
-  /* Completely hide lengthy 4-line description to keep card short */
-  .welcome-card-subtitle {
-    display: none !important;
+  .citation-lead {
+    display: none !important; /* Hide long paragraph on mobile so modal stays short */
   }
 
-  /* 3 Awards in a single neat compact row */
-  .welcome-pillars-grid {
+  .citation-metrics-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 6px;
-    margin-top: 10px;
-    margin-bottom: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
   }
 
-  .welcome-pillar-item {
-    padding: 7px 3px;
+  .citation-metric-col {
+    padding: 7px 4px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
   }
 
-  .welcome-pillar-icon {
-    font-size: 1.1rem;
+  .citation-stat-number {
+    font-size: 1.15rem;
+    line-height: 1.15;
     margin-bottom: 2px;
   }
 
-  .welcome-pillar-info h5 {
-    font-size: 0.6875rem;
+  .citation-stat-label {
+    font-size: 0.65rem;
     font-weight: 700;
-    margin-bottom: 0;
     line-height: 1.15;
     color: var(--color-white);
   }
 
-  .welcome-pillar-info p {
-    display: none !important;
+  .citation-stat-desc {
+    display: none !important; /* Hide subtitle on mobile for single-screen fit */
   }
 
-  /* Completely hide redundant quote bar to keep card short */
-  .welcome-accreditation-bar {
-    display: none !important;
+  .citation-endorsement-bar {
+    display: none !important; /* Hide extra ribbon on small mobile screens */
   }
 
   /* Compact side-by-side action buttons with exact equal height and styling */
@@ -3436,7 +3432,7 @@ input, select, textarea {
     width: 100% !important;
     gap: 8px !important;
     margin-top: 10px !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 2px !important;
   }
 
   .welcome-action-btn {
@@ -3464,11 +3460,6 @@ input, select, textarea {
     text-overflow: ellipsis !important;
   }
 
-  .welcome-card-footer-note {
-    font-size: 0.625rem;
-    margin-top: 2px;
-  }
-
   .best-school-floating-badge {
     bottom: 12px !important;
     left: 10px !important;
@@ -3479,8 +3470,9 @@ input, select, textarea {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
   }
 
-  .best-school-floating-badge .badge-trophy-icon {
-    font-size: 0.95rem !important;
+  .badge-crest-icon {
+    width: 15px;
+    height: 15px;
   }
 
   .back-to-top {
@@ -3633,12 +3625,16 @@ input, select, textarea {
 /* --------------------------------------------------------------------------
    Creative Welcome Spotlight Modal: #1 Best School Card
    -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   Institutional Accreditation & Academic Excellence Citation Card
+   (Authentic, Human-Crafted Editorial Prestige Design - No Emojis)
+   -------------------------------------------------------------------------- */
 .welcome-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(5, 12, 24, 0.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(4, 10, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 2500;
   display: flex;
   align-items: center;
@@ -3656,9 +3652,9 @@ input, select, textarea {
   visibility: visible;
 }
 
-.welcome-card-dialog {
+.citation-card {
   position: relative;
-  max-width: 580px;
+  max-width: 590px;
   width: 100%;
   max-height: calc(100dvh - 36px);
   max-height: calc(100vh - 36px);
@@ -3666,225 +3662,226 @@ input, select, textarea {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   margin: auto;
-  background: linear-gradient(150deg, #0c1b33 0%, #0f2447 50%, #091529 100%);
-  border: 1.5px solid rgba(245, 158, 11, 0.45);
-  border-radius: 20px;
-  padding: 36px 32px 26px 32px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65), 0 0 50px rgba(245, 158, 11, 0.22);
+  background: linear-gradient(160deg, #09152b 0%, #0d1e3d 55%, #071122 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  outline: 1px solid rgba(212, 175, 55, 0.2);
+  outline-offset: -8px;
+  border-radius: 18px;
+  padding: 34px 32px 26px 32px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(212, 175, 55, 0.12);
   color: var(--color-slate-200);
-  transform: translateY(24px) scale(0.95);
+  transform: translateY(20px) scale(0.96);
   transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
 }
 
-.welcome-modal-overlay.active .welcome-card-dialog {
+.welcome-modal-overlay.active .citation-card {
   transform: translateY(0) scale(1);
 }
 
-.welcome-card-glow {
+.citation-ambient-glow {
   position: absolute;
-  top: -80px;
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
-  width: 340px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.28) 0%, transparent 70%);
-  filter: blur(35px);
+  width: 320px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, transparent 70%);
+  filter: blur(30px);
   pointer-events: none;
 }
 
 .welcome-card-close {
   position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 36px;
-  height: 36px;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   color: var(--color-slate-300);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   z-index: 5;
 }
 
 .welcome-card-close:hover {
-  background: rgba(239, 68, 68, 0.2);
-  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.45);
   color: #fca5a5;
   transform: rotate(90deg);
 }
 
-.welcome-card-header {
+.citation-header {
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   position: relative;
   z-index: 2;
 }
 
-.best-school-crown-wrap {
-  position: relative;
-  display: inline-flex;
+.citation-crest-seal {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(15, 30, 58, 0.95));
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin: 0 auto 12px auto;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.18);
+  transition: transform 0.3s ease;
 }
 
-.best-school-trophy {
-  font-size: 2.85rem;
-  filter: drop-shadow(0 4px 14px rgba(245, 158, 11, 0.6));
-  animation: trophyHover 3s ease-in-out infinite;
-  display: inline-block;
+.citation-crest-seal:hover {
+  transform: scale(1.05);
 }
 
-@keyframes trophyHover {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-5px) scale(1.05); }
+.citation-crest-img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
 }
 
-.crown-sparkle {
-  position: absolute;
-  color: var(--color-gold-300);
-  font-size: 0.95rem;
-  animation: sparkleBlink 2s infinite ease-in-out;
-  pointer-events: none;
-}
-
-.sparkle-1 { top: -4px; left: -14px; animation-delay: 0s; }
-.sparkle-2 { top: -12px; right: -8px; animation-delay: 0.7s; }
-.sparkle-3 { bottom: 2px; right: -16px; animation-delay: 1.3s; }
-
-@keyframes sparkleBlink {
-  0%, 100% { opacity: 0.2; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.3); }
-}
-
-.best-school-award-tag {
+.citation-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  color: var(--color-gold-300);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 5px 14px;
-  border-radius: var(--radius-full);
-  margin-bottom: 12px;
-}
-
-.award-star {
   color: var(--color-gold-400);
-  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
-.welcome-card-title {
+.citation-dot {
+  opacity: 0.6;
+}
+
+.citation-title {
   font-family: var(--font-serif);
-  font-size: 1.65rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.3;
   margin-bottom: 10px;
 }
 
-.highlight-gold {
+.citation-gold {
   color: var(--color-gold-400);
-  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  background: linear-gradient(90deg, #fde68a, #f59e0b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-style: italic;
 }
 
-.welcome-card-subtitle {
-  font-size: 0.9rem;
+.citation-lead {
+  font-size: 0.875rem;
   color: var(--color-slate-300);
-  line-height: 1.55;
+  line-height: 1.6;
   max-width: 480px;
   margin: 0 auto;
 }
 
-.welcome-pillars-grid {
+/* Verified Metric Pillars (Clean Editorial Stats, Zero Emojis) */
+.citation-metrics-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.citation-metric-col {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.citation-metric-col:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.35);
+  transform: translateY(-2px);
+}
+
+.citation-stat-number {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-gold-300);
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.citation-stat-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.citation-stat-desc {
+  font-size: 0.6875rem;
+  color: var(--color-slate-400);
+  line-height: 1.35;
+  margin-top: 3px;
+}
+
+/* Official Endorsement Ribbon */
+.citation-endorsement-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(13, 27, 52, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 8px;
+  padding: 10px 14px;
   margin-bottom: 20px;
   position: relative;
   z-index: 2;
 }
 
-.welcome-pillar-item {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 12px 10px;
-  text-align: center;
-  transition: all 0.25s ease;
-}
-
-.welcome-pillar-item:hover {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.4);
-  transform: translateY(-2px);
-}
-
-.welcome-pillar-icon {
-  font-size: 1.35rem;
-  margin-bottom: 6px;
-}
-
-.welcome-pillar-info h5 {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--color-white);
-  margin-bottom: 3px;
-}
-
-.welcome-pillar-info p {
-  font-size: 0.71875rem;
-  color: var(--color-slate-400);
-  line-height: 1.35;
-}
-
-.welcome-accreditation-bar {
-  background: rgba(15, 35, 71, 0.7);
-  border: 1px dashed rgba(245, 158, 11, 0.35);
-  border-radius: 10px;
-  padding: 10px 14px;
-  display: flex;
+.citation-verified-tag {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.accreditation-badge {
-  background: var(--color-gold-400);
-  color: var(--color-navy-950);
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.18);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: var(--color-gold-300);
   font-size: 0.6875rem;
   font-weight: 800;
-  padding: 2px 8px;
+  padding: 3px 8px;
   border-radius: 4px;
   letter-spacing: 0.06em;
+  flex-shrink: 0;
 }
 
-.accreditation-quote {
+.citation-quote-text {
   font-size: 0.8125rem;
-  color: var(--color-gold-200);
+  color: var(--color-gold-100);
   font-style: italic;
   font-weight: 500;
+  line-height: 1.4;
 }
 
+/* Balanced Action Buttons */
 .welcome-card-actions {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   width: 100%;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: 14px;
+  margin-bottom: 4px;
   position: relative;
   z-index: 2;
 }
@@ -3900,7 +3897,7 @@ input, select, textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -3943,21 +3940,7 @@ input, select, textarea {
   box-shadow: 0 6px 16px rgba(245, 158, 11, 0.25);
 }
 
-.welcome-card-footer-note {
-  text-align: center;
-  font-size: 0.71875rem;
-  color: var(--color-slate-400);
-}
-
-.welcome-card-footer-note kbd {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1px 5px;
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-slate-200);
-}
-
-/* Re-open Floating Badge in Bottom-Left */
+/* Docked Re-open Floating Pill (Bottom-Left) */
 .best-school-floating-badge {
   position: fixed;
   bottom: 28px;
@@ -3966,7 +3949,7 @@ input, select, textarea {
   color: var(--color-gold-300);
   border: 1.5px solid var(--color-gold-400);
   border-radius: var(--radius-full);
-  padding: 9px 16px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -3985,8 +3968,11 @@ input, select, textarea {
   box-shadow: 0 12px 28px rgba(217, 119, 6, 0.45);
 }
 
-.badge-trophy-icon {
-  font-size: 1.05rem;
+.badge-crest-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 @media (max-width: 640px) {
