@@ -1120,6 +1120,14 @@ input, select, textarea {
   filter: brightness(0.92) contrast(1.05);
 }
 
+.pillar-img-student-girl {
+  object-position: center 20%;
+}
+
+.pillar-img-student-leaders {
+  object-position: center 16%;
+}
+
 .hero-pillar-item:hover .hero-pillar-media,
 .hero-pillar-item:focus-visible .hero-pillar-media {
   border-color: var(--color-gold-300);
