@@ -548,6 +548,7 @@ function initAdminShowcaseModal() {
 
   triggerButtons.forEach((btn) => {
     btn.onclick = (e) => {
+      e.preventDefault();
       const reqTab = btn.getAttribute("data-admin-tab");
       if (reqTab === "gallery") {
         switchTab("gallery");
