@@ -837,265 +837,86 @@ function initBackToTop() {
 
 /**
  * 4 Dynamic Divs Auto-Changing Showcase in Hero Section
- * Automatically rotates and changes all 4 divs through curated school pillar themes,
- * with live progress bar, staggered transition animations, and pause-on-hover.
+/**
+ * CAMPUS SPOTLIGHT - 4 CORE PILLARS CONTINUOUS RUNNER MARQUEE
+ * Smoothly runs the 4 core pillars horizontally one by one in an infinite loop,
+ * with pause-on-hover, pause/resume button control, and interactive smooth scrolling.
  */
 function initHeroRotator() {
   const container = document.getElementById("heroPillarsRotator");
-  const progressFill = document.getElementById("heroPillarsProgressFill");
+  const track = document.getElementById("heroPillarsTrack");
   const cycleIndicator = document.getElementById("pillarsCycleIndicator");
-  const dots = document.querySelectorAll(".pillars-dot");
   const pauseBtn = document.getElementById("pillarsPauseBtn");
   const pauseIcon = document.getElementById("pillarsPauseIcon");
-  const pillarSlots = document.querySelectorAll(".hero-pillar-item");
+  const pillarCards = document.querySelectorAll(".hero-pillar-item");
 
-  if (!container || pillarSlots.length === 0) return;
+  if (!container || !track) return;
 
-  // 4 Curated Sets of 4 Divs for Aryan Heritage School
-  const PILLAR_THEMES = [
-    {
-      name: "Theme 1 / 4 • Core Foundations",
-      items: [
-        {
-          title: "Academic Excellence",
-          desc: "Rigorous conceptual growth",
-          iconSvg: `<path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path>`
-        },
-        {
-          title: "Character & Ethics",
-          desc: "Lifelong moral grounding",
-          iconSvg: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>`
-        },
-        {
-          title: "Modern Campus",
-          desc: "Equipped STEM & smart spaces",
-          iconSvg: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>`
-        },
-        {
-          title: "Holistic Well-being",
-          desc: "Nurturing every individuality",
-          iconSvg: `<circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line>`
-        }
-      ]
-    },
-    {
-      name: "Theme 2 / 4 • Sports & Creative Arts",
-      items: [
-        {
-          title: "Sports & Athletics",
-          desc: "Expansive turfs & team spirit",
-          iconSvg: `<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H7v2h10v-2h-2c-.55 0-1-.45-1-1v-2.34"></path><path d="M18 4H6v7a6 6 0 0 0 12 0V4z"></path>`
-        },
-        {
-          title: "Creative & Fine Arts",
-          desc: "Music, visual arts & theatre",
-          iconSvg: `<circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>`
-        },
-        {
-          title: "Student Leadership",
-          desc: "Public speaking & clubs",
-          iconSvg: `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>`
-        },
-        {
-          title: "Global Perspective",
-          desc: "Multilingual cultural mindset",
-          iconSvg: `<circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>`
-        }
-      ]
-    },
-    {
-      name: "Theme 3 / 4 • Innovation & Safety",
-      items: [
-        {
-          title: "Robotics & STEM Labs",
-          desc: "Hands-on coding & AI hubs",
-          iconSvg: `<rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line>`
-        },
-        {
-          title: "Rich Knowledge Media",
-          desc: "Curated books & research hub",
-          iconSvg: `<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>`
-        },
-        {
-          title: "Safe & Caring Campus",
-          desc: "24/7 CCTV & dedicated clinic",
-          iconSvg: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path>`
-        },
-        {
-          title: "Distinguished Mentors",
-          desc: "Passionate student-first faculty",
-          iconSvg: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>`
-        }
-      ]
-    },
-    {
-      name: "Theme 4 / 4 • Experiential & Eco",
-      items: [
-        {
-          title: "Experiential Learning",
-          desc: "Field research & experiments",
-          iconSvg: `<path d="M10 2v7.31"></path><path d="M14 9.3V2"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path>`
-        },
-        {
-          title: "Green Eco-Campus",
-          desc: "Solar powered & botanical grounds",
-          iconSvg: `<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>`
-        },
-        {
-          title: "CBSE Aligned Rigor",
-          desc: "Structured board excellence",
-          iconSvg: `<circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>`
-        },
-        {
-          title: "Future-Ready Skills",
-          desc: "Critical thinking & tech fluency",
-          iconSvg: `<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>`
-        }
-      ]
-    }
-  ];
-
-  const totalThemes = PILLAR_THEMES.length; // 4 Themes
-  const cycleDuration = 4200; // 4.2 seconds per theme rotation
-  const progressStep = 40; // 40ms interval
-
-  let currentThemeIndex = 0;
-  let elapsedTime = 0;
   let isPaused = false;
-  let timerId = null;
 
-  // Render Theme with Staggered Transition across the 4 Divs
-  function applyTheme(themeIndex, immediate = false) {
-    currentThemeIndex = (themeIndex + totalThemes) % totalThemes;
-    const theme = PILLAR_THEMES[currentThemeIndex];
+  function updatePauseState(paused) {
+    isPaused = paused;
+    track.classList.toggle("is-paused", isPaused);
 
-    // Update cycle indicator text & dots
-    if (cycleIndicator) {
-      cycleIndicator.textContent = theme.name;
-    }
-
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle("active", idx === currentThemeIndex);
-    });
-
-    // Update the 4 Divs with a staggered ripple transition
-    pillarSlots.forEach((slot, slotIdx) => {
-      const itemData = theme.items[slotIdx];
-      if (!itemData) return;
-
-      const titleEl = document.getElementById(`pillarTitle${slotIdx}`);
-      const descEl = document.getElementById(`pillarDesc${slotIdx}`);
-      const iconEl = document.getElementById(`pillarIcon${slotIdx}`);
-
-      if (immediate) {
-        if (titleEl) titleEl.textContent = itemData.title;
-        if (descEl) descEl.textContent = itemData.desc;
-        if (iconEl) {
-          iconEl.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${itemData.iconSvg}</svg>`;
-        }
-      } else {
-        // Stagger animation: Slot 0 -> Slot 1 -> Slot 2 -> Slot 3
-        const staggerDelay = slotIdx * 70;
-        setTimeout(() => {
-          slot.classList.add("slot-transitioning");
-
-          setTimeout(() => {
-            if (titleEl) titleEl.textContent = itemData.title;
-            if (descEl) descEl.textContent = itemData.desc;
-            if (iconEl) {
-              iconEl.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${itemData.iconSvg}</svg>`;
-            }
-
-            slot.classList.remove("slot-transitioning");
-            slot.classList.add("slot-updated");
-
-            setTimeout(() => {
-              slot.classList.remove("slot-updated");
-            }, 350);
-          }, 180);
-        }, staggerDelay);
+    if (isPaused) {
+      if (pauseIcon) {
+        pauseIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"></polygon>`;
       }
-    });
-
-    elapsedTime = 0;
-    if (progressFill) progressFill.style.width = "0%";
-  }
-
-  // Timer loop
-  function tick() {
-    if (!isPaused) {
-      elapsedTime += progressStep;
-      const progressPercent = Math.min((elapsedTime / cycleDuration) * 100, 100);
-
-      if (progressFill) {
-        progressFill.style.width = `${progressPercent}%`;
+      pauseBtn?.setAttribute("title", "Resume Marquee");
+      pauseBtn?.classList.add("manually-paused");
+      if (pauseBtn) pauseBtn.style.color = "var(--color-gold-300)";
+      if (cycleIndicator) {
+        cycleIndicator.textContent = "Marquee Paused • Click to Resume";
       }
-
-      // Dynamic sub-highlight wave flowing across Div 0 -> 1 -> 2 -> 3
-      const quarterTime = cycleDuration / 4;
-      const activeSlotIndex = Math.floor(elapsedTime / quarterTime) % 4;
-      pillarSlots.forEach((slot, idx) => {
-        slot.classList.toggle("active", idx === activeSlotIndex);
-      });
-
-      if (elapsedTime >= cycleDuration) {
-        applyTheme(currentThemeIndex + 1);
+    } else {
+      if (pauseIcon) {
+        pauseIcon.innerHTML = `<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>`;
+      }
+      pauseBtn?.setAttribute("title", "Pause Marquee");
+      pauseBtn?.classList.remove("manually-paused");
+      if (pauseBtn) pauseBtn.style.color = "";
+      if (cycleIndicator) {
+        cycleIndicator.textContent = "Running Continuously • Hover to Pause";
       }
     }
   }
 
-  // Start continuous loop
-  timerId = setInterval(tick, progressStep);
+  // Toggle button
+  pauseBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    updatePauseState(!isPaused);
+  });
 
-  // Pause on hover so the user can easily read the 4 divs
+  // Pause on hover indicator update
   container.addEventListener("mouseenter", () => {
-    isPaused = true;
+    if (!isPaused && cycleIndicator) {
+      cycleIndicator.textContent = "Paused on Hover";
+    }
   });
 
   container.addEventListener("mouseleave", () => {
-    // If not manually paused, resume
-    if (!pauseBtn?.classList.contains("manually-paused")) {
-      isPaused = false;
+    if (!isPaused && cycleIndicator) {
+      cycleIndicator.textContent = "Running Continuously • Hover to Pause";
     }
   });
 
-  // Manual Pause/Play Button
-  pauseBtn?.addEventListener("click", () => {
-    const isManuallyPaused = pauseBtn.classList.toggle("manually-paused");
-    isPaused = isManuallyPaused;
-
-    if (isManuallyPaused) {
-      pauseIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"></polygon>`;
-      pauseBtn.setAttribute("title", "Resume Auto-Rotation");
-      pauseBtn.style.color = "var(--color-gold-300)";
-    } else {
-      pauseIcon.innerHTML = `<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>`;
-      pauseBtn.setAttribute("title", "Pause Auto-Rotation");
-      pauseBtn.style.color = "";
-    }
-  });
-
-  // Indicator dots click to jump to theme
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      const cycleIdx = parseInt(dot.getAttribute("data-cycle"), 10);
-      if (!isNaN(cycleIdx)) {
-        applyTheme(cycleIdx);
+  // Clicking any pillar card scrolls smoothly to that pillar's section
+  pillarCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const targetSelector = card.getAttribute("data-target");
+      if (!targetSelector) return;
+      const targetElement = document.querySelector(targetSelector);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
-  });
 
-  // Clicking any of the 4 divs highlights it
-  pillarSlots.forEach((slot, slotIdx) => {
-    slot.addEventListener("click", () => {
-      pillarSlots.forEach((s) => s.classList.remove("active"));
-      slot.classList.add("active");
-
-      // Visual feedback pulse
-      slot.style.transform = "scale(1.02)";
-      setTimeout(() => {
-        slot.style.transform = "";
-      }, 250);
+    // Keyboard support (Enter/Space)
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        card.click();
+      }
     });
   });
 }

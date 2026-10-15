@@ -211,26 +211,20 @@
 
       </div>
 
-      <!-- 4 Divs Showcase at Hero Bottom (Auto-Rotating & Changing on their own) -->
+      <!-- 4 Divs Continuous Running Marquee Showcase at Hero Bottom -->
       <div class="hero-pillars-rotator-container" id="heroPillarsRotator"
-        aria-label="Campus Pillars Auto-Rotating Showcase">
+        aria-label="Campus Core Pillars Running Showcase">
 
-        <!-- Live Status & Rotation Controls -->
+        <!-- Live Status & Controls Header -->
         <div class="hero-pillars-header">
           <div class="hero-pillars-live-badge">
             <span class="live-pulse-dot"></span>
-            <span class="live-badge-text">CAMPUS SPOTLIGHT • ROTATING PILLARS</span>
+            <span class="live-badge-text">CAMPUS SPOTLIGHT • 4 CORE PILLARS</span>
           </div>
           <div class="hero-pillars-nav">
-            <span class="hero-pillars-cycle-text" id="pillarsCycleIndicator">Theme 1 / 4 • Core Foundations</span>
-            <div class="hero-pillars-dots" role="tablist" id="pillarsDots">
-              <button class="pillars-dot active" data-cycle="0" aria-label="View Theme 1: Core Foundations"></button>
-              <button class="pillars-dot" data-cycle="1" aria-label="View Theme 2: Sports & Creativity"></button>
-              <button class="pillars-dot" data-cycle="2" aria-label="View Theme 3: Innovation & Safety"></button>
-              <button class="pillars-dot" data-cycle="3" aria-label="View Theme 4: Experiential & Eco"></button>
-            </div>
-            <button class="hero-pillars-pause-btn" id="pillarsPauseBtn" aria-label="Pause Auto-Rotation"
-              title="Pause / Play Rotation">
+            <span class="hero-pillars-cycle-text" id="pillarsCycleIndicator">Running Continuously • Hover to Pause</span>
+            <button class="hero-pillars-pause-btn" id="pillarsPauseBtn" aria-label="Pause / Play Marquee"
+              title="Pause Marquee">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" id="pillarsPauseIcon">
                 <rect x="6" y="4" width="4" height="16"></rect>
                 <rect x="14" y="4" width="4" height="16"></rect>
@@ -239,72 +233,266 @@
           </div>
         </div>
 
-        <!-- Top Continuous Progress Bar Fill -->
-        <div class="hero-pillars-progress-track">
-          <div class="hero-pillars-progress-fill" id="heroPillarsProgressFill"></div>
-        </div>
+        <!-- Marquee Viewport with Edge Fade Masks -->
+        <div class="hero-pillars-marquee-viewport" id="heroPillarsViewport">
+          <div class="hero-pillars-marquee-track" id="heroPillarsTrack">
 
-        <!-- The 4 Rotating Divs in a Row -->
-        <div class="hero-pillars" id="heroPillarsGrid">
+            <!-- Group 1: 4 Core Divs -->
+            <div class="hero-marquee-group">
+              <!-- Div 1 -->
+              <div class="hero-pillar-item" data-target="#academics" role="button" tabindex="0" title="Click to view Academics">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 01</span>
+                  <h4>Academic Excellence</h4>
+                  <p>Rigorous conceptual growth</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
 
-          <!-- Div 1 -->
-          <div class="hero-pillar-item active" data-pillar-slot="0" id="pillarSlot0" title="Click to view details">
-            <div class="hero-pillar-icon" id="pillarIcon0">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-              </svg>
+              <!-- Div 2 -->
+              <div class="hero-pillar-item" data-target="#about" role="button" tabindex="0" title="Click to view Values & Heritage">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 02</span>
+                  <h4>Character & Ethics</h4>
+                  <p>Lifelong moral grounding</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Div 3 -->
+              <div class="hero-pillar-item" data-target="#facilities" role="button" tabindex="0" title="Click to view Modern Campus">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 03</span>
+                  <h4>Modern Campus</h4>
+                  <p>Equipped STEM & smart spaces</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Div 4 -->
+              <div class="hero-pillar-item" data-target="#highlights" role="button" tabindex="0" title="Click to view Student Life">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 04</span>
+                  <h4>Holistic Well-being</h4>
+                  <p>Nurturing every individuality</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
             </div>
-            <div class="hero-pillar-text">
-              <h4 id="pillarTitle0">Academic Excellence</h4>
-              <p id="pillarDesc0">Rigorous conceptual growth</p>
+
+            <!-- Group 2: Duplicate for seamless infinite loop -->
+            <div class="hero-marquee-group" aria-hidden="true">
+              <!-- Div 1 -->
+              <div class="hero-pillar-item" data-target="#academics" role="button" tabindex="-1">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 01</span>
+                  <h4>Academic Excellence</h4>
+                  <p>Rigorous conceptual growth</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Div 2 -->
+              <div class="hero-pillar-item" data-target="#about" role="button" tabindex="-1">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 02</span>
+                  <h4>Character & Ethics</h4>
+                  <p>Lifelong moral grounding</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Div 3 -->
+              <div class="hero-pillar-item" data-target="#facilities" role="button" tabindex="-1">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 03</span>
+                  <h4>Modern Campus</h4>
+                  <p>Equipped STEM & smart spaces</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Div 4 -->
+              <div class="hero-pillar-item" data-target="#highlights" role="button" tabindex="-1">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 04</span>
+                  <h4>Holistic Well-being</h4>
+                  <p>Nurturing every individuality</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
             </div>
+
+            <!-- Group 3: Duplicate for ultra-wide screen seamlessness -->
+            <div class="hero-marquee-group" aria-hidden="true">
+              <!-- Div 1 -->
+              <div class="hero-pillar-item" data-target="#academics" role="button" tabindex="-1">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 01</span>
+                  <h4>Academic Excellence</h4>
+                  <p>Rigorous conceptual growth</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Div 2 -->
+              <div class="hero-pillar-item" data-target="#about" role="button" tabindex="-1">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 02</span>
+                  <h4>Character & Ethics</h4>
+                  <p>Lifelong moral grounding</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Div 3 -->
+              <div class="hero-pillar-item" data-target="#facilities" role="button" tabindex="-1">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 03</span>
+                  <h4>Modern Campus</h4>
+                  <p>Equipped STEM & smart spaces</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Div 4 -->
+              <div class="hero-pillar-item" data-target="#highlights" role="button" tabindex="-1">
+                <div class="hero-pillar-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                  </svg>
+                </div>
+                <div class="hero-pillar-text">
+                  <span class="pillar-tag">Pillar 04</span>
+                  <h4>Holistic Well-being</h4>
+                  <p>Nurturing every individuality</p>
+                </div>
+                <div class="hero-pillar-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <!-- Div 2 -->
-          <div class="hero-pillar-item" data-pillar-slot="1" id="pillarSlot1" title="Click to view details">
-            <div class="hero-pillar-icon" id="pillarIcon1">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <div class="hero-pillar-text">
-              <h4 id="pillarTitle1">Character & Ethics</h4>
-              <p id="pillarDesc1">Lifelong moral grounding</p>
-            </div>
-          </div>
-
-          <!-- Div 3 -->
-          <div class="hero-pillar-item" data-pillar-slot="2" id="pillarSlot2" title="Click to view details">
-            <div class="hero-pillar-icon" id="pillarIcon2">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                <line x1="8" y1="21" x2="16" y2="21"></line>
-                <line x1="12" y1="17" x2="12" y2="21"></line>
-              </svg>
-            </div>
-            <div class="hero-pillar-text">
-              <h4 id="pillarTitle2">Modern Campus</h4>
-              <p id="pillarDesc2">Equipped STEM & smart spaces</p>
-            </div>
-          </div>
-
-          <!-- Div 4 -->
-          <div class="hero-pillar-item" data-pillar-slot="3" id="pillarSlot3" title="Click to view details">
-            <div class="hero-pillar-icon" id="pillarIcon3">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-              </svg>
-            </div>
-            <div class="hero-pillar-text">
-              <h4 id="pillarTitle3">Holistic Well-being</h4>
-              <p id="pillarDesc3">Nurturing every individuality</p>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
