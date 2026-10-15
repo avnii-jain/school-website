@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="crestGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="50%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="shieldNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2347" />
+      <stop offset="100%" stop-color="#081427" />
+    </linearGradient>
+  </defs>
+  <!-- Shield Background -->
+  <path d="M50 8 C68 8, 86 14, 88 28 C90 56, 75 80, 50 94 C25 80, 10 56, 12 28 C14 14, 32 8, 50 8 Z" fill="url(#shieldNavy)" stroke="url(#crestGold)" stroke-width="3.5" />
+  <!-- Inner Shield Trim -->
+  <path d="M50 14 C65 14, 79 19, 81 30 C82 53, 70 73, 50 85 C30 73, 18 53, 19 30 C21 19, 35 14, 50 14 Z" fill="none" stroke="url(#crestGold)" stroke-width="1.2" stroke-dasharray="3,2" opacity="0.8" />
+  <!-- Laurel Wreath Leaves Left -->
+  <path d="M28 44 C24 38, 26 31, 31 34 C33 36, 31 43, 28 44 Z" fill="url(#crestGold)" />
+  <path d="M25 54 C21 49, 23 42, 28 45 C30 47, 28 53, 25 54 Z" fill="url(#crestGold)" />
+  <path d="M28 64 C24 60, 26 53, 31 56 C32 58, 30 63, 28 64 Z" fill="url(#crestGold)" />
+  <!-- Laurel Wreath Leaves Right -->
+  <path d="M72 44 C76 38, 74 31, 69 34 C67 36, 69 43, 72 44 Z" fill="url(#crestGold)" />
+  <path d="M75 54 C79 49, 77 42, 72 45 C70 47, 72 53, 75 54 Z" fill="url(#crestGold)" />
+  <path d="M72 64 C76 60, 74 53, 69 56 C68 58, 70 63, 72 64 Z" fill="url(#crestGold)" />
+  <!-- Star on Top -->
+  <polygon points="50,18 52,24 58,24 53,28 55,34 50,30 45,34 47,28 42,24 48,24" fill="url(#crestGold)" />
+  <!-- Monogram AHS -->
+  <text x="50" y="58" font-family="'Cinzel', 'Playfair Display', 'Times New Roman', serif" font-size="22" font-weight="bold" fill="url(#crestGold)" text-anchor="middle" letter-spacing="1">AHS</text>
+  <!-- Motto Ribbon Outline -->
+  <path d="M32 68 Q50 74 68 68 Q50 78 32 68 Z" fill="url(#crestGold)" opacity="0.9"/>
+</svg>
