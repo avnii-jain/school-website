@@ -1068,6 +1068,10 @@ function initSectionTypewriterReveal() {
  * Automatically appears when the user opens the website.
  */
 function initBestSchoolWelcomeCard() {
+  // Disabled for now per user request
+  const SHOW_MODAL = false;
+  if (!SHOW_MODAL) return;
+
   const overlay = document.getElementById("bestSchoolModalOverlay");
   const closeBtn = document.getElementById("closeBestSchoolCardBtn");
   const reopenBtn = document.getElementById("reopenBestSchoolCardBtn");
