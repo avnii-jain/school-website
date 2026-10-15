@@ -20,6 +20,8 @@ function initApp() {
   initEnquiryForm();
   initNewsletter();
   initBackToTop();
+  initSectionTypewriterReveal();
+  initBestSchoolWelcomeCard();
 }
 
 /**
@@ -921,5 +923,211 @@ function initHeroRotator() {
     });
   });
 }
+
+/**
+ * Typewriter & Scroll Reveal on Section Reach
+ * Types out section texts (eyebrow & title) and reveals divs/cards in a rhythmic typewriter manner as the user reaches each section.
+ */
+function initSectionTypewriterReveal() {
+  const sections = document.querySelectorAll("section[id]:not(#home)");
+  if (!sections.length) return;
+
+  const SECTION_DIV_SELECTORS = [
+    ".highlight-card",
+    ".academic-card",
+    ".facility-card",
+    ".notice-card",
+    ".why-us-item",
+    ".gallery-item",
+    ".location-info-card",
+    ".map-container",
+    ".commitment-item",
+    ".admissions-step",
+    ".admissions-form-container",
+    ".about-image-wrapper",
+    ".why-us-img-box",
+    ".section-subtitle",
+    ".about-lead",
+    ".about-text"
+  ].join(", ");
+
+  function prepareTypewriterElement(el) {
+    if (!el || el.dataset.twPrepared === "true") return;
+    el.dataset.twPrepared = "true";
+
+    const rawText = el.textContent.trim();
+    el.dataset.fullText = rawText;
+    el.setAttribute("aria-label", rawText);
+
+    const words = rawText.split(/\s+/);
+    const wordSpans = words.map((word) => {
+      const chars = word.split("").map((c) => {
+        const safeChar = c === "&" ? "&amp;" : (c === "<" ? "&lt;" : (c === ">" ? "&gt;" : c));
+        return `<span class="tw-char">${safeChar}</span>`;
+      }).join("");
+      return `<span class="tw-word">${chars}</span>`;
+    }).join('<span class="tw-space">&nbsp;</span>');
+
+    el.innerHTML = wordSpans + '<span class="tw-cursor" aria-hidden="true"></span>';
+  }
+
+  function typewriteElement(el, speed = 22, onComplete) {
+    if (!el) {
+      if (onComplete) onComplete();
+      return;
+    }
+    const chars = el.querySelectorAll(".tw-char:not(.typed)");
+    const cursor = el.querySelector(".tw-cursor");
+    if (chars.length === 0) {
+      if (cursor) cursor.remove();
+      if (onComplete) onComplete();
+      return;
+    }
+
+    if (cursor) {
+      cursor.classList.add("active");
+    }
+
+    let i = 0;
+    function step() {
+      if (i < chars.length) {
+        const charSpan = chars[i];
+        charSpan.classList.add("typed");
+        if (cursor && charSpan.parentNode) {
+          charSpan.parentNode.insertBefore(cursor, charSpan.nextSibling);
+        }
+        i++;
+        setTimeout(step, speed);
+      } else {
+        if (cursor) {
+          cursor.classList.add("finished");
+          setTimeout(() => cursor.remove(), 1200);
+        }
+        if (onComplete) onComplete();
+      }
+    }
+    step();
+  }
+
+  // Pre-prepare sections & apply initial hidden state to divs
+  sections.forEach((section) => {
+    const eyebrow = section.querySelector(".section-eyebrow");
+    const title = section.querySelector(".section-title, .about-title");
+    if (eyebrow) prepareTypewriterElement(eyebrow);
+    if (title) prepareTypewriterElement(title);
+
+    const divs = section.querySelectorAll(SECTION_DIV_SELECTORS);
+    divs.forEach((div) => {
+      div.classList.add("typewriter-div");
+    });
+  });
+
+  function revealSection(section) {
+    if (section.dataset.sectionRevealed === "true") return;
+    section.dataset.sectionRevealed = "true";
+
+    const eyebrow = section.querySelector(".section-eyebrow");
+    const title = section.querySelector(".section-title, .about-title");
+    const divs = section.querySelectorAll(SECTION_DIV_SELECTORS);
+
+    // 1. Typewrite eyebrow & title with a smooth offset
+    if (eyebrow) {
+      typewriteElement(eyebrow, 16);
+    }
+    if (title) {
+      setTimeout(() => {
+        typewriteElement(title, 22);
+      }, eyebrow ? 140 : 0);
+    }
+
+    // 2. Typewriter rhythmic appearance for divs & cards
+    divs.forEach((div, index) => {
+      setTimeout(() => {
+        div.classList.add("div-revealed");
+      }, 160 + Math.min(index, 10) * 85);
+    });
+  }
+
+  // Setup Intersection Observer to trigger as user reaches each section
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            revealSection(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px 0px -60px 0px",
+        threshold: 0.1
+      }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  } else {
+    // Fallback if IntersectionObserver not available
+    sections.forEach((section) => revealSection(section));
+  }
+}
+
+/**
+ * Creative Welcome Spotlight: #1 Best School Recognition Card
+ * Automatically appears when the user opens the website.
+ */
+function initBestSchoolWelcomeCard() {
+  const overlay = document.getElementById("bestSchoolModalOverlay");
+  const closeBtn = document.getElementById("closeBestSchoolCardBtn");
+  const reopenBtn = document.getElementById("reopenBestSchoolCardBtn");
+  const exploreBtn = document.getElementById("welcomeExploreBtn");
+  const admissionsBtn = document.getElementById("welcomeAdmissionsBtn");
+
+  if (!overlay) return;
+
+  function openCard() {
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeCard() {
+    overlay.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  // Smooth appearance 650ms after user opens the site
+  setTimeout(() => {
+    openCard();
+  }, 650);
+
+  closeBtn?.addEventListener("click", closeCard);
+  reopenBtn?.addEventListener("click", openCard);
+
+  // Close on backdrop click
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      closeCard();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("active")) {
+      closeCard();
+    }
+  });
+
+  // Action buttons: close modal and smooth scroll
+  exploreBtn?.addEventListener("click", () => {
+    closeCard();
+  });
+  admissionsBtn?.addEventListener("click", () => {
+    closeCard();
+  });
+}
+
 
 
