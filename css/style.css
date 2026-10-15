@@ -4277,6 +4277,61 @@ input, select, textarea {
   }
 }
 
+/* Extra Small Smartphones (< 380px) */
+@media (max-width: 380px) {
+  .poster-modal-container {
+    max-width: 300px;
+    border-width: 2.5px;
+    border-radius: 16px;
+  }
+
+  .poster-slides-viewport,
+  .poster-card {
+    min-height: 440px;
+  }
+
+  .poster-headline-white {
+    font-size: 1.62rem;
+  }
+
+  .poster-badge-yellow {
+    font-size: 0.92rem;
+    padding: 3px 10px;
+  }
+
+  .poster-script-yellow {
+    font-size: 0.92rem;
+  }
+
+  .poster-hero-image-wrap {
+    width: 170px;
+    height: 220px;
+  }
+
+  .poster-hero-awards {
+    width: 155px;
+    height: 180px;
+  }
+
+  .poster-ribbon-bar {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    padding: 5px 8px;
+    gap: 4px;
+    margin: 0 8px 6px 8px;
+  }
+
+  .poster-footer-strip {
+    font-size: 0.64rem;
+    padding: 6px 10px;
+  }
+
+  .poster-cta-btn {
+    font-size: 0.62rem;
+    padding: 4px 8px;
+  }
+}
+
 /* Docked Re-open Floating Pill (Bottom-Left) */
 .best-school-floating-badge {
   position: fixed;
