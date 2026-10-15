@@ -2677,9 +2677,25 @@ input, select, textarea {
     gap: 40px;
   }
 
+  .about-image-accent {
+    display: none;
+  }
+
   .about-image-main,
   .why-us-img {
     height: 380px;
+  }
+
+  .about-floating-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    margin: -36px auto 0 auto;
+    width: calc(100% - 32px);
+    max-width: 420px;
+    z-index: 2;
+    box-shadow: 0 16px 36px rgba(11, 25, 48, 0.35);
   }
 
   .map-layout {
@@ -2838,15 +2854,43 @@ input, select, textarea {
     flex-shrink: 0;
   }
 
+  .about-image-accent {
+    display: none !important;
+  }
+
   .about-image-main {
-    height: 280px;
+    height: 260px;
+    border-radius: var(--radius-md);
   }
 
   .about-floating-card {
-    position: static;
-    margin-top: 14px;
-    max-width: 100%;
-    padding: 16px;
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin: -24px auto 0 auto !important;
+    width: calc(100% - 20px) !important;
+    max-width: 100% !important;
+    padding: 16px 18px !important;
+    border-radius: var(--radius-md);
+    box-shadow: 0 12px 30px rgba(11, 25, 48, 0.4) !important;
+    z-index: 2;
+  }
+
+  .about-floating-card-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+  }
+
+  .about-floating-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+
+  .about-floating-card p {
+    font-size: 0.8125rem;
+    line-height: 1.45;
   }
 
   .about-commitments {
@@ -2896,19 +2940,138 @@ input, select, textarea {
     min-height: 280px;
   }
 
+  /* --------------------------------------------------------------------------
+     Compact & Streamlined Footer on Mobile (2-column layout + clearance for badges)
+     -------------------------------------------------------------------------- */
+  .footer {
+    padding-top: 36px !important;
+    padding-bottom: 96px !important; /* Prevents floating badge and back-to-top overlap */
+  }
+
   .footer-top {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 22px 14px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .footer-col-brand {
+    grid-column: span 2 !important;
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-brand-crest {
+    width: 38px !important;
+    height: 38px !important;
+    margin: 0 auto 8px auto !important;
+    display: block;
+  }
+
+  .footer-brand-title {
+    font-size: 1.05rem !important;
+    margin-bottom: 6px !important;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-brand-desc {
+    font-size: 0.8125rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 8px !important;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-col-brand > div[style*="color: var(--color-gold-300)"] {
+    font-size: 0.75rem !important;
+  }
+
+  .footer-col-links,
+  .footer-col-academics {
+    grid-column: span 1 !important;
+  }
+
+  .footer-title {
+    font-size: 0.9375rem !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .footer-title::after {
+    width: 20px !important;
+    height: 2px !important;
+  }
+
+  .footer-links {
+    gap: 7px !important;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+    color: var(--color-slate-300);
+  }
+
+  .footer-col-contact {
+    grid-column: span 2 !important;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-contact-item {
+    font-size: 0.8rem !important;
+    margin-bottom: 6px !important;
+    gap: 8px !important;
+    line-height: 1.4 !important;
+  }
+
+  .footer-contact-item svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-top: 2px !important;
+  }
+
+  .footer-newsletter-text {
+    font-size: 0.8rem !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+  }
+
+  .footer-newsletter-form {
+    display: flex;
+    gap: 6px !important;
+  }
+
+  .footer-newsletter-input {
+    padding: 8px 10px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .footer-newsletter-form .btn {
+    padding: 8px 12px !important;
+    font-size: 0.78rem !important;
+    white-space: nowrap;
   }
 
   .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-    gap: 16px;
+    padding-top: 16px !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 10px !important;
+    font-size: 0.72rem !important;
   }
 
   .footer-admin-link {
-    justify-content: center;
+    justify-content: center !important;
+    font-size: 0.75rem !important;
+    padding: 4px 10px !important;
+  }
+
+  .footer-client-badge {
+    font-size: 0.72rem !important;
+    padding: 2px 10px !important;
   }
 
   /* Welcome Spotlight Card on Mobile (Shortened, Clean & Compact) */
@@ -3048,17 +3211,24 @@ input, select, textarea {
   }
 
   .best-school-floating-badge {
-    bottom: 18px;
-    left: 14px;
-    padding: 7px 12px;
-    font-size: 0.75rem;
+    bottom: 12px !important;
+    left: 10px !important;
+    padding: 6px 12px !important;
+    font-size: 0.72rem !important;
+    gap: 6px !important;
+    border-width: 1px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .best-school-floating-badge .badge-trophy-icon {
+    font-size: 0.95rem !important;
   }
 
   .back-to-top {
-    bottom: 18px;
-    right: 14px;
-    width: 40px;
-    height: 40px;
+    bottom: 12px !important;
+    right: 10px !important;
+    width: 38px !important;
+    height: 38px !important;
   }
 
   .lightbox-content-box {
@@ -3088,8 +3258,36 @@ input, select, textarea {
     font-size: 0.84rem;
   }
 
+  .about-floating-card {
+    width: 100% !important;
+    margin: -14px 0 0 0 !important;
+    padding: 14px !important;
+  }
+
+  .footer-top {
+    gap: 16px 10px !important;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem !important;
+  }
+
+  .best-school-floating-badge {
+    bottom: 10px !important;
+    left: 8px !important;
+    padding: 5px 10px !important;
+    font-size: 0.68rem !important;
+  }
+
   .best-school-floating-badge .badge-pill-text {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
+  }
+
+  .back-to-top {
+    bottom: 10px !important;
+    right: 8px !important;
+    width: 34px !important;
+    height: 34px !important;
   }
 }
 
@@ -3469,4 +3667,14 @@ input, select, textarea {
 
 .badge-trophy-icon {
   font-size: 1.05rem;
+}
+
+@media (max-width: 640px) {
+  .best-school-floating-badge {
+    bottom: 12px !important;
+    left: 10px !important;
+    padding: 6px 12px !important;
+    font-size: 0.72rem !important;
+    gap: 6px !important;
+  }
 }
