@@ -3715,25 +3715,24 @@ input, select, textarea {
    Creative Welcome Spotlight Modal: #1 Best School Card
    -------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------
-   Institutional Accreditation & Academic Excellence Citation Card
-   (Authentic, Human-Crafted Editorial Prestige Design - No Emojis)
+   Creative Welcome Modal - Soft Shaded Light Design (No Gradients)
    -------------------------------------------------------------------------- */
 .welcome-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(4, 10, 20, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 2500;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .welcome-modal-overlay.active {
@@ -3741,100 +3740,127 @@ input, select, textarea {
   visibility: visible;
 }
 
-/* ==========================================================================
-   Announcement & Citation Poster Modal Carousel (Looping 2 Cards)
-   ========================================================================== */
+/* Modal Wrapper (Contains Card Container + Dedicated Bottom Dots) */
+.poster-modal-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 580px;
+  margin: auto;
+  padding: 10px 0;
+}
+
+/* Card Container */
 .poster-modal-container {
   position: relative;
-  max-width: 480px;
-  width: calc(100% - 28px);
-  margin: auto;
-  border: 4px solid #ffffff;
-  border-radius: 26px;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), 0 0 50px rgba(2, 82, 180, 0.35);
-  background: #0252b4;
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25), 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: transparent;
   overflow: visible;
-  transform: translateY(20px) scale(0.96);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
 
 .welcome-modal-overlay.active .poster-modal-container {
   transform: translateY(0) scale(1);
 }
 
-/* Floating Red Circular Close Button matching user screenshot */
+/* Progress Bar at Card Top Edge (Clipped inside viewport border) */
+.poster-timer-bar-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(29, 78, 216, 0.12);
+  z-index: 70;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.poster-timer-bar {
+  height: 100%;
+  width: 0%;
+  background: #1d4ed8;
+}
+
+/* Floating Circular Close Button */
 .poster-modal-close {
   position: absolute;
-  top: -16px;
-  right: -16px;
-  width: 40px;
-  height: 40px;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: #ef4444;
-  border: 3.5px solid #ffffff;
-  color: #ffffff;
-  font-size: 1.15rem;
-  font-weight: 900;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 80;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.poster-modal-close:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+  transform: scale(1.08) rotate(90deg);
+}
+
+/* Navigation Arrow Buttons */
+.poster-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #1e293b;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 60;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
-  transition: transform 0.25s ease, background 0.25s ease;
-  line-height: 1;
-}
-
-.poster-modal-close:hover {
-  background: #dc2626;
-  transform: scale(1.12) rotate(90deg);
-}
-
-/* Navigation Arrow Buttons matching user screenshot */
-.poster-nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.42);
-  backdrop-filter: blur(6px);
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-  color: #ffffff;
-  font-size: 1.25rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 45;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-  line-height: 1;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
 }
 
 .poster-prev {
-  left: 12px;
+  left: -14px;
 }
 
 .poster-next {
-  right: 12px;
+  right: -14px;
 }
 
 .poster-nav-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-  border-color: #ffffff;
-  transform: translateY(-50%) scale(1.12);
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.1);
 }
 
 /* Slides Viewport & Track */
 .poster-slides-viewport {
   position: relative;
   width: 100%;
-  border-radius: 22px;
   overflow: hidden;
-  min-height: 570px;
+  min-height: 480px;
+  border-radius: 24px;
+  border: 1.5px solid #cbd5e1;
+  background: #edf4fe;
 }
 
 .poster-slides-track {
@@ -3848,8 +3874,8 @@ input, select, textarea {
   inset: 0;
   opacity: 0;
   visibility: hidden;
-  transform: scale(0.96) translateX(20px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.55s;
+  transform: scale(0.97) translateX(20px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s;
   pointer-events: none;
 }
 
@@ -3866,19 +3892,25 @@ input, select, textarea {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 570px;
-  color: #ffffff;
+  min-height: 480px;
+  color: #1e293b;
   position: relative;
   overflow: hidden;
   user-select: none;
 }
 
+/* Soft Shaded Light Backgrounds (NO GRADIENTS) */
 .poster-card-admissions {
-  background: radial-gradient(circle at 75% 30%, #1e70e6 0%, #0252b4 40%, #003e8a 85%, #002c66 100%);
+  background: #edf4fe; /* Soft calming ice-blue tint */
 }
 
 .poster-card-awards {
-  background: radial-gradient(circle at 75% 30%, #173673 0%, #0b1d47 40%, #071330 85%, #030a1c 100%);
+  background: #edf8f2; /* Soft refreshing mint-sage tint */
+}
+
+/* Hide all ambient glow circles */
+.poster-glow-circle {
+  display: none !important;
 }
 
 /* Header Bar */
@@ -3886,9 +3918,16 @@ input, select, textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 22px 10px 22px;
+  padding: 16px 22px 10px 22px;
   position: relative;
   z-index: 15;
+  background: #e2effd;
+  border-bottom: 1px solid #d0e3fa;
+}
+
+.poster-card-awards .poster-header-bar {
+  background: #def4e7;
+  border-bottom: 1px solid #c9ecda;
 }
 
 .poster-brand {
@@ -3898,16 +3937,20 @@ input, select, textarea {
 }
 
 .poster-crest {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: #ffffff;
-  border: 2px solid #facc15;
+  border: 1.5px solid #93c5fd;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
+}
+
+.poster-crest-gold {
+  border-color: #6ee7b7;
 }
 
 .poster-brand-text {
@@ -3916,39 +3959,65 @@ input, select, textarea {
 }
 
 .poster-brand-name {
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #ffffff;
+  font-family: var(--font-display), var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #0b1930;
   line-height: 1.15;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .poster-brand-sub {
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #fde047;
+  letter-spacing: 0.1em;
+  color: #1d4ed8;
   text-transform: uppercase;
 }
 
+.poster-sub-gold {
+  color: #047857;
+}
+
 .poster-header-tag {
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 4px 10px;
+  background: #dbeafe;
+  border: 1px solid #93c5fd;
+  padding: 4px 11px;
   border-radius: 9999px;
-  font-size: 0.65rem;
+  font-size: 0.67rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #ffffff;
+  letter-spacing: 0.04em;
+  color: #1e40af;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 36px;
 }
 
 .poster-tag-gold {
-  background: rgba(212, 175, 55, 0.25);
-  border-color: #d4af37;
-  color: #fef08a;
+  background: #d1fae5;
+  border-color: #6ee7b7;
+  color: #065f46;
+}
+
+/* Pulsing solid dot */
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  animation: pulseDotAnim 1.6s infinite ease-in-out;
+  display: inline-block;
+}
+
+.pulse-gold {
+  background: #059669;
+}
+
+@keyframes pulseDotAnim {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
 }
 
 /* Poster Content Area */
@@ -3956,128 +4025,191 @@ input, select, textarea {
   position: relative;
   flex: 1;
   display: flex;
-  flex-direction: column;
-  padding: 8px 24px;
-  min-height: 350px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  z-index: 10;
+  gap: 16px;
 }
 
 .poster-copy-box {
   position: relative;
   z-index: 15;
-  margin-top: 10px;
-  max-width: 250px;
+  flex: 1;
+  max-width: 290px;
 }
 
-/* Yellow Angled Ribbon Badge */
+/* Solid Badges (NO GRADIENTS) */
 .poster-badge-yellow {
   display: inline-block;
-  background: #facc15;
-  color: #0b1930;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
   font-family: var(--font-sans);
-  font-size: 1.25rem;
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  padding: 5px 16px;
-  transform: rotate(-2.5deg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  margin-bottom: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 .poster-badge-amber {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  color: #ffffff;
-  font-size: 1.05rem;
+  background: #dcfce7;
+  color: #14532d;
+  border-color: #86efac;
 }
 
-/* Bold White 3D Headline */
+/* Headline - Elegant Classical Serif */
 .poster-headline-white {
-  font-family: var(--font-sans);
-  font-size: 2.45rem;
-  font-weight: 950;
-  letter-spacing: -0.03em;
-  color: #ffffff;
-  line-height: 1.02;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-serif);
+  font-size: 1.68rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #0b1930;
+  line-height: 1.22;
   margin: 0 0 6px 0;
+  text-shadow: none;
 }
 
-/* Yellow Script Subtitle */
+/* Subtitle - Clean Editorial Sans */
 .poster-script-yellow {
-  font-family: 'Playfair Display', cursive, serif;
-  font-style: italic;
-  font-size: 1.25rem;
-  color: #fde047;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  line-height: 1.2;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-style: normal;
+  color: #475569;
+  line-height: 1.45;
+  margin-bottom: 14px;
+  text-shadow: none;
 }
 
 .poster-script-gold {
-  color: #fef08a;
+  color: #475569;
 }
 
-/* Hero Character Image */
+/* Features Checklist */
+.poster-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.poster-feat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.25;
+}
+
+.poster-feat-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #93c5fd;
+  color: #1d4ed8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.poster-feat-icon.feat-gold {
+  background: #ffffff;
+  border-color: #6ee7b7;
+  color: #047857;
+}
+
+/* Hero Character Image Frame */
 .poster-hero-image-wrap {
-  position: absolute;
-  right: -5px;
-  bottom: 0;
-  width: 280px;
-  height: 330px;
-  z-index: 10;
-  pointer-events: none;
+  width: 215px;
+  height: 250px;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 12;
+}
+
+.poster-img-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  border: 2.5px solid #bfdbfe;
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.08);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.poster-frame-gold {
+  border-color: #a7f3d0;
+  box-shadow: 0 10px 24px rgba(5, 150, 105, 0.08);
+  background: #ffffff;
 }
 
 .poster-hero-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: right bottom;
-  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.45));
+  display: block;
 }
 
-.poster-hero-awards {
-  border-radius: 18px;
+.poster-hero-card1 {
   object-fit: cover;
-  object-position: center 6%;
-  width: 240px;
-  height: 250px;
-  border: 3px solid rgba(212, 175, 55, 0.7);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+  object-position: center 10%;
 }
 
-/* Floating Rocket Badge */
-.poster-rocket-badge {
+.poster-hero-card2 {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Floating chip on the photo */
+.poster-img-floating-chip {
   position: absolute;
-  top: 14px;
-  right: 28px;
-  font-size: 2.4rem;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
-  z-index: 12;
-  animation: floatRocketAnim 3s ease-in-out infinite alternate;
+  bottom: 8px;
+  left: 8px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 9999px;
+  padding: 3px 9px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.poster-trophy-badge {
-  font-size: 2.2rem;
-}
-
-@keyframes floatRocketAnim {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-8px) rotate(6deg); }
-}
-
-/* Ribbon Banner */
-.poster-ribbon-bar {
-  background: linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #b91c1c 100%);
+.poster-img-floating-chip.chip-gold {
+  background: #064e3b;
+  border-color: #047857;
   color: #ffffff;
-  font-weight: 900;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+}
+
+.chip-star, .chip-trophy {
+  font-size: 0.72rem;
+}
+
+/* Solid Ribbon Banner (NO GRADIENTS) */
+.poster-ribbon-bar {
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
   text-align: center;
-  padding: 8px 14px;
+  padding: 7px 14px;
   margin: 0 16px 10px 16px;
   border-radius: 8px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 20;
   display: flex;
@@ -4088,103 +4220,121 @@ input, select, textarea {
 }
 
 .poster-ribbon-gold {
-  background: linear-gradient(90deg, #b45309 0%, #d97706 50%, #b45309 100%);
-  border: 1px solid rgba(254, 240, 138, 0.4);
+  background: #064e3b;
+  color: #ffffff;
 }
 
 .poster-ribbon-dot {
-  color: #facc15;
+  color: #94a3b8;
   font-size: 0.8rem;
 }
 
-/* Bottom Gold Strip Contact Bar */
+/* Bottom Contact Bar */
 .poster-footer-strip {
-  background: #002253;
-  border-top: 2.5px solid #facc15;
-  padding: 10px 18px;
+  background: #e2effd;
+  border-top: 1px solid #d0e3fa;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   font-size: 0.75rem;
-  font-weight: 700;
-  color: #fde047;
+  font-weight: 600;
+  color: #334155;
   position: relative;
   z-index: 20;
 }
 
 .poster-footer-gold {
-  background: #050e1f;
-  border-top-color: #d4af37;
-  color: #fef08a;
+  background: #def4e7;
+  border-top-color: #c9ecda;
+  color: #334155;
 }
 
 .poster-contact-item {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: inherit;
+  color: #0f172a;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: color 0.2s ease;
 }
 
-.poster-contact-item.citation-quote-mini {
-  font-style: italic;
-  font-size: 0.7rem;
-  color: #e2e8f0;
-  max-width: 170px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.poster-contact-item:hover {
+  color: #1d4ed8;
 }
 
-.poster-cta-btn {
-  background: #facc15;
-  color: #0b1930 !important;
-  font-weight: 900;
-  font-size: 0.72rem;
-  letter-spacing: 0.02em;
-  padding: 6px 14px;
+.poster-info-badge {
+  font-size: 0.67rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  background: #ffffff;
+  border: 1px solid #bfdbfe;
+  padding: 3px 8px;
   border-radius: 6px;
+  white-space: nowrap;
+}
+
+.poster-info-badge.badge-gold {
+  background: #ffffff;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+/* Solid CTA Buttons (NO GRADIENTS) */
+.poster-cta-btn {
+  background: #1d4ed8;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+  padding: 7px 15px;
+  border-radius: 7px;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-  margin-left: auto;
+  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.25);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .poster-cta-btn:hover {
-  background: #fde047;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+  background: #1e40af;
+  transform: translateY(-1px);
 }
 
 .poster-cta-gold {
-  background: linear-gradient(135deg, #d4af37, #b45309);
+  background: #059669;
   color: #ffffff !important;
-  border: 1px solid rgba(254, 240, 138, 0.5);
+  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
 }
 
 .poster-cta-gold:hover {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: #047857;
   color: #ffffff !important;
 }
 
-/* Bottom Carousel Dots Indicator */
+/* Dedicated Bottom Carousel Dots Indicator (Outside the card container) */
 .poster-dots {
-  position: absolute;
-  bottom: -28px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  margin-top: 14px;
+  background: #ffffff;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
   z-index: 50;
+  width: fit-content;
 }
 
 .poster-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.45);
+  background: #cbd5e1;
   border: none;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -4192,172 +4342,48 @@ input, select, textarea {
 }
 
 .poster-dot:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: #94a3b8;
 }
 
 .poster-dot.active {
-  width: 28px;
+  width: 22px;
   border-radius: 9999px;
-  background: #ffffff;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
-}
-
-/* Mobile Media Queries */
-@media (max-width: 640px) {
-  .poster-modal-container {
-    max-width: 360px;
-    border-width: 3px;
-    border-radius: 20px;
-  }
-
-  .poster-modal-close {
-    top: -12px;
-    right: -12px;
-    width: 34px;
-    height: 34px;
-    font-size: 1rem;
-    border-width: 2.5px;
-  }
-
-  .poster-nav-btn {
-    width: 34px;
-    height: 34px;
-    font-size: 1rem;
-  }
-
-  .poster-prev {
-    left: 6px;
-  }
-
-  .poster-next {
-    right: 6px;
-  }
-
-  .poster-slides-viewport,
-  .poster-card {
-    min-height: 500px;
-  }
-
-  .poster-headline-white {
-    font-size: 1.95rem;
-  }
-
-  .poster-badge-yellow {
-    font-size: 1.05rem;
-    padding: 3px 12px;
-  }
-
-  .poster-script-yellow {
-    font-size: 1.05rem;
-  }
-
-  .poster-hero-image-wrap {
-    width: 220px;
-    height: 270px;
-  }
-
-  .poster-hero-awards {
-    width: 190px;
-    height: 210px;
-  }
-
-  .poster-footer-strip {
-    font-size: 0.68rem;
-    padding: 8px 12px;
-  }
-
-  .poster-contact-item:nth-child(2) {
-    display: none;
-  }
-
-  .poster-ribbon-bar {
-    font-size: 0.68rem;
-    padding: 6px 10px;
-    margin: 0 10px 8px 10px;
-  }
-}
-
-/* Extra Small Smartphones (< 380px) */
-@media (max-width: 380px) {
-  .poster-modal-container {
-    max-width: 300px;
-    border-width: 2.5px;
-    border-radius: 16px;
-  }
-
-  .poster-slides-viewport,
-  .poster-card {
-    min-height: 440px;
-  }
-
-  .poster-headline-white {
-    font-size: 1.62rem;
-  }
-
-  .poster-badge-yellow {
-    font-size: 0.92rem;
-    padding: 3px 10px;
-  }
-
-  .poster-script-yellow {
-    font-size: 0.92rem;
-  }
-
-  .poster-hero-image-wrap {
-    width: 170px;
-    height: 220px;
-  }
-
-  .poster-hero-awards {
-    width: 155px;
-    height: 180px;
-  }
-
-  .poster-ribbon-bar {
-    font-size: 0.6rem;
-    letter-spacing: 0.04em;
-    padding: 5px 8px;
-    gap: 4px;
-    margin: 0 8px 6px 8px;
-  }
-
-  .poster-footer-strip {
-    font-size: 0.64rem;
-    padding: 6px 10px;
-  }
-
-  .poster-cta-btn {
-    font-size: 0.62rem;
-    padding: 4px 8px;
-  }
+  background: #1d4ed8;
 }
 
 /* Docked Re-open Floating Pill (Bottom-Left) */
 .best-school-floating-badge {
   position: fixed;
-  bottom: 28px;
-  left: 28px;
-  background: var(--color-navy-900);
-  color: var(--color-gold-300);
-  border: 1.5px solid var(--color-gold-400);
+  bottom: 24px;
+  left: 24px;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1.5px solid #cbd5e1;
   border-radius: var(--radius-full);
-  padding: 8px 16px;
+  padding: 9px 18px;
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 0.8125rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(11, 25, 48, 0.45), 0 0 16px rgba(245, 158, 11, 0.2);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
   z-index: 990;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .best-school-floating-badge:hover {
-  background: var(--color-gold-400);
-  color: var(--color-navy-950);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(217, 119, 6, 0.45);
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.2);
+}
+
+@keyframes badgePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
 }
 
 .badge-crest-icon {
@@ -4367,7 +4393,197 @@ input, select, textarea {
   flex-shrink: 0;
 }
 
+/* ==========================================================================
+   Mobile Responsive Optimizations (< 640px)
+   ========================================================================== */
 @media (max-width: 640px) {
+  .welcome-modal-overlay {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .poster-modal-wrapper {
+    max-width: 375px;
+    width: 100%;
+    padding: 6px 0 12px 0;
+  }
+
+  .poster-modal-container {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  .poster-slides-viewport {
+    border-radius: 20px;
+    min-height: auto;
+    max-height: calc(88vh - 54px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .poster-card {
+    min-height: auto;
+  }
+
+  /* Hide navigation arrows on mobile so card sides stay clean */
+  .poster-nav-btn {
+    display: none !important;
+  }
+
+  /* Header Bar on Mobile */
+  .poster-header-bar {
+    padding: 10px 12px 8px 12px;
+    gap: 6px;
+  }
+
+  .poster-crest {
+    width: 32px;
+    height: 32px;
+  }
+
+  .poster-crest img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .poster-brand-name {
+    font-size: 0.78rem;
+    line-height: 1.1;
+  }
+
+  .poster-brand-sub {
+    font-size: 0.56rem;
+  }
+
+  .poster-header-tag {
+    font-size: 0.58rem;
+    padding: 2px 7px;
+    margin-right: 30px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .poster-modal-close {
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .poster-modal-close svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Main Content Area on Mobile */
+  .poster-content-area {
+    flex-direction: column;
+    padding: 8px 12px 10px 12px;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .poster-copy-box {
+    max-width: 100%;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .poster-badge-yellow {
+    font-size: 0.62rem;
+    padding: 3px 8px;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .poster-headline-white {
+    font-size: 1.28rem;
+    line-height: 1.2;
+    margin: 0 0 4px 0;
+  }
+
+  .poster-script-yellow {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+
+  .poster-features-list {
+    display: none;
+  }
+
+  /* Photo Showcase on Mobile */
+  .poster-hero-image-wrap {
+    width: 160px;
+    height: 145px;
+    margin: 4px auto 6px auto;
+  }
+
+  .poster-img-frame {
+    border-radius: 14px;
+    border-width: 2px;
+  }
+
+  .poster-img-floating-chip {
+    padding: 2px 7px;
+    font-size: 0.6rem;
+    bottom: 6px;
+    left: 6px;
+  }
+
+  /* Ribbon Bar on Mobile */
+  .poster-ribbon-bar {
+    font-size: 0.58rem;
+    padding: 5px 8px;
+    margin: 0 10px 6px 10px;
+    gap: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Footer Strip on Mobile */
+  .poster-footer-strip {
+    font-size: 0.68rem;
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .poster-contact-item {
+    font-size: 0.68rem;
+    gap: 4px;
+  }
+
+  .poster-contact-item svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .poster-info-badge {
+    display: none;
+  }
+
+  .poster-cta-btn {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+
+  /* Dedicated Dots Indicator on Mobile */
+  .poster-dots {
+    margin-top: 10px;
+    padding: 4px 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .poster-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .poster-dot.active {
+    width: 18px;
+  }
+
   .best-school-floating-badge {
     bottom: 12px !important;
     left: 10px !important;
@@ -4376,3 +4592,53 @@ input, select, textarea {
     gap: 6px !important;
   }
 }
+
+/* Small Smartphone View (< 380px) */
+@media (max-width: 380px) {
+  .poster-modal-wrapper {
+    max-width: 310px;
+  }
+
+  .poster-header-bar {
+    padding: 8px 10px 6px 10px;
+  }
+
+  .poster-brand-sub {
+    display: none;
+  }
+
+  .poster-header-tag {
+    font-size: 0.54rem;
+    padding: 2px 6px;
+    margin-right: 28px;
+  }
+
+  .poster-headline-white {
+    font-size: 1.15rem;
+  }
+
+  .poster-hero-image-wrap {
+    width: 135px;
+    height: 125px;
+  }
+
+  .poster-ribbon-bar {
+    font-size: 0.52rem;
+    padding: 4px 6px;
+    margin: 0 6px 4px 6px;
+  }
+
+  .poster-footer-strip {
+    padding: 6px 10px;
+  }
+
+  .poster-contact-item span {
+    font-size: 0.62rem;
+  }
+
+  .poster-cta-btn {
+    font-size: 0.64rem;
+    padding: 5px 8px;
+  }
+}
+

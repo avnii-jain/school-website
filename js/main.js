@@ -1068,15 +1068,12 @@ function initSectionTypewriterReveal() {
  * Automatically appears when the user opens the website.
  */
 function initBestSchoolWelcomeCard() {
-  // Disabled for now per user request
-  const SHOW_MODAL = false;
-  if (!SHOW_MODAL) return;
-
   const overlay = document.getElementById("bestSchoolModalOverlay");
   const closeBtn = document.getElementById("closeBestSchoolCardBtn");
   const reopenBtn = document.getElementById("reopenBestSchoolCardBtn");
   const exploreBtn = document.getElementById("welcomeExploreBtn");
   const admissionsBtn = document.getElementById("welcomeAdmissionsBtn");
+  const timerBar = document.getElementById("posterTimerBar");
 
   if (!overlay) return;
 
@@ -1087,6 +1084,30 @@ function initBestSchoolWelcomeCard() {
   const container = document.getElementById("posterModalContainer");
   let currentSlide = 0;
   let loopInterval = null;
+  const SLIDE_DURATION = 4500;
+
+  function resetProgressBar() {
+    if (!timerBar) return;
+    timerBar.style.transition = "none";
+    timerBar.style.width = "0%";
+    // Force reflow
+    void timerBar.offsetWidth;
+    timerBar.style.transition = `width ${SLIDE_DURATION}ms linear`;
+    timerBar.style.width = "100%";
+  }
+
+  function pauseProgressBar() {
+    if (!timerBar) return;
+    const computedWidth = window.getComputedStyle(timerBar).width;
+    timerBar.style.transition = "none";
+    timerBar.style.width = computedWidth;
+  }
+
+  function resumeProgressBar() {
+    if (!timerBar) return;
+    timerBar.style.transition = `width ${SLIDE_DURATION}ms linear`;
+    timerBar.style.width = "100%";
+  }
 
   function goToSlide(index) {
     if (slides.length === 0) return;
@@ -1097,6 +1118,7 @@ function initBestSchoolWelcomeCard() {
     dots.forEach((dot, i) => {
       dot.classList.toggle("active", i === currentSlide);
     });
+    resetProgressBar();
   }
 
   function nextSlide() {
@@ -1109,7 +1131,8 @@ function initBestSchoolWelcomeCard() {
 
   function startLoop() {
     stopLoop();
-    loopInterval = setInterval(nextSlide, 4500);
+    resetProgressBar();
+    loopInterval = setInterval(nextSlide, SLIDE_DURATION);
   }
 
   function stopLoop() {
@@ -1117,11 +1140,13 @@ function initBestSchoolWelcomeCard() {
       clearInterval(loopInterval);
       loopInterval = null;
     }
+    pauseProgressBar();
   }
 
   function openCard() {
     overlay.classList.add("active");
     document.body.style.overflow = "hidden";
+    if (reopenBtn) reopenBtn.style.display = "none";
     goToSlide(0);
     startLoop();
   }
@@ -1130,6 +1155,10 @@ function initBestSchoolWelcomeCard() {
     overlay.classList.remove("active");
     document.body.style.overflow = "";
     stopLoop();
+    if (reopenBtn) {
+      reopenBtn.style.display = "flex";
+      reopenBtn.style.animation = "badgePulse 2s infinite";
+    }
   }
 
   nextBtn?.addEventListener("click", (e) => {
@@ -1153,24 +1182,28 @@ function initBestSchoolWelcomeCard() {
   });
 
   // Pause loop when user hovers over modal card
-  container?.addEventListener("mouseenter", stopLoop);
+  container?.addEventListener("mouseenter", () => {
+    stopLoop();
+  });
+
   container?.addEventListener("mouseleave", () => {
     if (overlay.classList.contains("active")) {
+      resumeProgressBar();
       startLoop();
     }
   });
 
-  // Smooth appearance 650ms after user opens the site
+  // Smooth appearance 700ms after user lands on website
   setTimeout(() => {
     openCard();
-  }, 650);
+  }, 700);
 
   closeBtn?.addEventListener("click", closeCard);
   reopenBtn?.addEventListener("click", openCard);
 
   // Close on backdrop click
   overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
+    if (e.target === overlay || e.target.classList.contains("poster-modal-wrapper")) {
       closeCard();
     }
   });
@@ -1182,7 +1215,7 @@ function initBestSchoolWelcomeCard() {
     }
   });
 
-  // Action buttons: close modal and smooth scroll
+  // Action buttons: close modal and smooth scroll to relevant section
   exploreBtn?.addEventListener("click", () => {
     closeCard();
   });
@@ -1190,6 +1223,4 @@ function initBestSchoolWelcomeCard() {
     closeCard();
   });
 }
-
-
 
