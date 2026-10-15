@@ -1146,8 +1146,8 @@
         <!-- 1. Smart Classrooms -->
         <div class="facility-card">
           <div class="facility-media">
-            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80"
-              alt="Interactive Smart Classrooms" class="facility-img" loading="lazy">
+            <img src="assets/smart-classrooms.jpg" alt="Interactive Smart Classrooms" class="facility-img"
+              loading="lazy">
             <span class="facility-tag">Interactive Tech</span>
           </div>
           <div class="facility-body">
@@ -1162,8 +1162,8 @@
         <!-- 2. Science & Computer Labs -->
         <div class="facility-card">
           <div class="facility-media">
-            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80"
-              alt="Science and Computer Laboratories" class="facility-img" loading="lazy">
+            <img src="assets/laboratory.jpg" alt="Science and Computer Laboratories" class="facility-img"
+              loading="lazy">
             <span class="facility-tag">STEM & Research</span>
           </div>
           <div class="facility-body">
@@ -1178,8 +1178,7 @@
         <!-- 3. Library & Reading Zone -->
         <div class="facility-card">
           <div class="facility-media">
-            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"
-              alt="Library and Quiet Reading Space" class="facility-img" loading="lazy">
+            <img src="assets/library.png" alt="Library and Quiet Reading Space" class="facility-img" loading="lazy">
             <span class="facility-tag">Curated Knowledge</span>
           </div>
           <div class="facility-body">
@@ -1194,8 +1193,7 @@
         <!-- 4. Sports & Outdoor Activities -->
         <div class="facility-card">
           <div class="facility-media">
-            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80"
-              alt="Outdoor Sports Field and Athletics" class="facility-img" loading="lazy">
+            <img src="assets/sports.jpg" alt="Outdoor Sports Field and Athletics" class="facility-img" loading="lazy">
             <span class="facility-tag">Physical Fitness</span>
           </div>
           <div class="facility-body">
@@ -1210,8 +1208,7 @@
         <!-- 5. Arts & Creative Learning -->
         <div class="facility-card">
           <div class="facility-media">
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80"
-              alt="Arts, Music and Creative Workshop" class="facility-img" loading="lazy">
+            <img src="assets/creative.jpg" alt="Arts, Music and Creative Workshop" class="facility-img" loading="lazy">
             <span class="facility-tag">Creative Studio</span>
           </div>
           <div class="facility-body">
@@ -1226,8 +1223,7 @@
         <!-- 6. Transport Facilities -->
         <div class="facility-card">
           <div class="facility-media">
-            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80"
-              alt="School Safe Bus Transportation" class="facility-img" loading="lazy">
+            <img src="assets/transport.jpg" alt="School Safe Bus Transportation" class="facility-img" loading="lazy">
             <span class="facility-tag">Safe Commute</span>
           </div>
           <div class="facility-body">
@@ -1509,7 +1505,8 @@
         </div>
 
         <!-- Photo 9: Campus / Student Life & Heritage Courtyard -->
-        <div class="gallery-item gallery-item-emerald" data-category="campus" data-title="Student Life & Heritage Courtyard">
+        <div class="gallery-item gallery-item-emerald" data-category="campus"
+          data-title="Student Life & Heritage Courtyard">
           <span class="gallery-mint-badge">Campus Life</span>
           <img src="assets/why-choose-us.jpg" alt="Students in Heritage Campus Courtyard" loading="lazy">
           <div class="gallery-zoom-icon">
@@ -1895,7 +1892,6 @@
             <li><a href="#gallery">Campus Gallery</a></li>
             <li><a href="#admissions">Admissions Process</a></li>
             <li><a href="#location">Find Our School</a></li>
-            <li><a href="admin.html">Admin Portal</a></li>
           </ul>
         </div>
 
@@ -2207,7 +2203,7 @@
        ========================================================================= -->
   <div class="welcome-modal-overlay" id="bestSchoolModalOverlay" role="dialog" aria-modal="true"
     aria-labelledby="bestSchoolModalTitle">
-    <div class="welcome-card-dialog citation-card">
+    <div class="welcome-card-dialog citation-card citation-card-split">
       <!-- Subtle Ambient Glow -->
       <div class="citation-ambient-glow"></div>
 
@@ -2220,28 +2216,45 @@
         </svg>
       </button>
 
-      <!-- Citation Image Banner with Vignette Overlay & Seal -->
-      <div class="citation-banner">
-        <img src="assets/school-awards.jpg" alt="Students Celebrating National Academic Excellence Award" class="citation-banner-img">
-        <div class="citation-banner-overlay"></div>
-        <div class="citation-banner-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-          </svg>
-          <span>NATIONAL CITATION 2026–2027</span>
-        </div>
-        <div class="citation-crest-seal">
-          <img src="assets/favicon.svg" alt="Aryan Heritage School Emblem Crest" class="citation-crest-img">
+      <!-- Left Column: Visual Media Showcase -->
+      <div class="citation-media-col">
+        <div class="citation-media-frame">
+          <img src="assets/school-awards.jpg" alt="Students with National Academic Excellence Award"
+            class="citation-media-img">
+          <div class="citation-media-overlay"></div>
+
+          <!-- Top Honor Pill -->
+          <div class="citation-honor-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <span>ACCREDITED #1 RANK</span>
+          </div>
+
+          <!-- Bottom Floating Badge with Crest & Citation Year -->
+          <div class="citation-seal-pill">
+            <div class="citation-crest-mini">
+              <img src="assets/favicon.svg" alt="AHS Crest" width="22" height="22">
+            </div>
+            <div class="citation-seal-text">
+              <strong>National Excellence Citation</strong>
+              <span>Session 2026–2027</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Card Content Container -->
-      <div class="citation-body">
+      <!-- Right Column: Editorial Citation Body -->
+      <div class="citation-content-col">
         <div class="citation-header">
           <div class="citation-eyebrow">
+            <span class="citation-star">★</span>
             <span>NATIONAL EDUCATION ALLIANCE</span>
             <span class="citation-dot">•</span>
-            <span>ANNUAL CITATION 2026–2027</span>
+            <span>ANNUAL CITATION</span>
+            <span class="citation-star">★</span>
           </div>
           <h3 class="citation-title" id="bestSchoolModalTitle">
             Conferred <span class="citation-gold">#1 Ranking</span> in Holistic Academic Excellence
@@ -2252,22 +2265,22 @@
           </p>
         </div>
 
-        <!-- Verified Metric Pillars (Color-Coded Badges) -->
+        <!-- Verified Metric Pillars (Regal Ivory & Gold) -->
         <div class="citation-metrics-row">
-          <div class="citation-metric-col citation-metric-amber">
+          <div class="citation-metric-col">
             <div class="citation-stat-number">100%</div>
             <div class="citation-stat-label">Board Distinctions</div>
             <div class="citation-stat-desc">CBSE & Global Placements</div>
           </div>
-          <div class="citation-metric-col citation-metric-emerald">
+          <div class="citation-metric-col">
             <div class="citation-stat-number">12-Acre</div>
             <div class="citation-stat-label">Smart Eco-Campus</div>
             <div class="citation-stat-desc">Advanced STEM & Innovation Labs</div>
           </div>
-          <div class="citation-metric-col citation-metric-cyan">
+          <div class="citation-metric-col">
             <div class="citation-stat-number">15 : 1</div>
             <div class="citation-stat-label">Mentorship Ratio</div>
-            <div class="citation-stat-desc">Personalized Academic Guidance</div>
+            <div class="citation-stat-desc">Personalized Guidance</div>
           </div>
         </div>
 
