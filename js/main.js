@@ -968,41 +968,27 @@ function initSectionTypewriterReveal() {
       return `<span class="tw-word">${chars}</span>`;
     }).join('<span class="tw-space">&nbsp;</span>');
 
-    el.innerHTML = wordSpans + '<span class="tw-cursor" aria-hidden="true"></span>';
+    el.innerHTML = wordSpans;
   }
 
-  function typewriteElement(el, speed = 22, onComplete) {
+  function typewriteElement(el, speed = 20, onComplete) {
     if (!el) {
       if (onComplete) onComplete();
       return;
     }
     const chars = el.querySelectorAll(".tw-char:not(.typed)");
-    const cursor = el.querySelector(".tw-cursor");
     if (chars.length === 0) {
-      if (cursor) cursor.remove();
       if (onComplete) onComplete();
       return;
-    }
-
-    if (cursor) {
-      cursor.classList.add("active");
     }
 
     let i = 0;
     function step() {
       if (i < chars.length) {
-        const charSpan = chars[i];
-        charSpan.classList.add("typed");
-        if (cursor && charSpan.parentNode) {
-          charSpan.parentNode.insertBefore(cursor, charSpan.nextSibling);
-        }
+        chars[i].classList.add("typed");
         i++;
         setTimeout(step, speed);
       } else {
-        if (cursor) {
-          cursor.classList.add("finished");
-          setTimeout(() => cursor.remove(), 1200);
-        }
         if (onComplete) onComplete();
       }
     }
