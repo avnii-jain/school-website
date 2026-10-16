@@ -22,6 +22,7 @@ function initApp() {
   initBackToTop();
   initSectionTypewriterReveal();
   initBestSchoolWelcomeCard();
+  initBadgePillRotator();
 }
 
 /**
@@ -1193,6 +1194,32 @@ function initBestSchoolWelcomeCard() {
     }
   });
 
+  // Mobile Touch Swipe Gesture Support
+  let touchStartX = 0;
+  let touchStartY = 0;
+  container?.addEventListener("touchstart", (e) => {
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  container?.addEventListener("touchend", (e) => {
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+    const touchEndX = e.changedTouches[0].screenX;
+    const touchEndY = e.changedTouches[0].screenY;
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
+    // Horizontal swipe threshold of 35px, checking diffX > diffY to avoid vertical page gestures
+    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      startLoop();
+    }
+  }, { passive: true });
+
   // Smooth appearance 700ms after user lands on website
   setTimeout(() => {
     openCard();
@@ -1222,5 +1249,41 @@ function initBestSchoolWelcomeCard() {
   admissionsBtn?.addEventListener("click", () => {
     closeCard();
   });
+  const campusBtn = document.getElementById("welcomeCampusBtn");
+  campusBtn?.addEventListener("click", () => {
+    closeCard();
+  });
 }
 
+
+/**
+ * Continuously loops the 3 highlight messages in the floating dock pill
+ * throughout the entire website as the user navigates.
+ */
+function initBadgePillRotator() {
+  const rotator = document.getElementById("badgePillRotator");
+  if (!rotator) return;
+  const items = rotator.querySelectorAll(".badge-pill-item");
+  if (items.length < 2) return;
+
+  let currentIndex = 0;
+  let pillInterval = null;
+
+  function cyclePill() {
+    items[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % items.length;
+    items[currentIndex].classList.add("active");
+  }
+
+  pillInterval = setInterval(cyclePill, 3200);
+
+  // Pause pill loop on hover so visitor can read clearly
+  const pillBtn = document.getElementById("reopenBestSchoolCardBtn");
+  pillBtn?.addEventListener("mouseenter", () => {
+    if (pillInterval) clearInterval(pillInterval);
+  });
+  pillBtn?.addEventListener("mouseleave", () => {
+    if (pillInterval) clearInterval(pillInterval);
+    pillInterval = setInterval(cyclePill, 3200);
+  });
+}

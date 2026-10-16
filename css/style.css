@@ -1321,6 +1321,10 @@ input, select, textarea {
   margin-bottom: 24px;
 }
 
+.about-mobile-br {
+  display: none;
+}
+
 .about-lead {
   font-size: 1.125rem;
   color: var(--color-slate-800);
@@ -3098,67 +3102,190 @@ input, select, textarea {
     margin-bottom: 36px;
   }
 
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    gap: 8px;
+    margin-bottom: 12px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    width: 16px;
+  }
+
+  .about-content .section-eyebrow {
+    justify-content: flex-start;
+  }
+
+  .about-mobile-br {
+    display: inline;
+  }
+
   .section-title,
   .about-title {
-    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
-    line-height: 1.3;
+    font-size: clamp(1.35rem, 5.2vw, 1.68rem);
+    line-height: 1.25;
+    word-break: normal;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  .about-title {
+    margin-bottom: 14px;
   }
 
   .section-subtitle,
   .about-lead {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 0.88rem;
+    line-height: 1.55;
   }
 
   .hero-section {
-    padding-top: 100px;
-    padding-bottom: 32px;
+    min-height: auto;
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+
+  .hero-grid {
+    margin-bottom: 14px;
+    gap: 16px;
   }
 
   .hero-eyebrow-badge {
-    font-size: 0.72rem;
-    padding: 5px 12px;
+    font-size: 0.68rem;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
   }
 
   .hero-title {
-    font-size: clamp(1.75rem, 7vw, 2.35rem);
-    line-height: 1.25;
+    font-size: clamp(1.45rem, 5.8vw, 1.85rem);
+    line-height: 1.2;
+    margin-bottom: 10px;
   }
 
   .hero-lead {
-    font-size: 0.9375rem;
-    margin-bottom: 24px;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin-bottom: 16px;
   }
 
   .hero-actions {
     flex-direction: column;
     width: 100%;
-    gap: 12px;
+    gap: 8px;
+    margin-bottom: 6px;
   }
 
   .hero-actions .btn {
     width: 100%;
     justify-content: center;
+    padding: 10px 18px;
+    font-size: 0.875rem;
+    min-height: 42px;
+  }
+
+  .hero-pillars-rotator-container {
+    padding-top: 12px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+
+  .hero-pillars-header {
+    margin-bottom: 8px;
+  }
+
+  .hero-pillars-live-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-pillars-cycle-text {
+    font-size: 0.65rem;
+  }
+
+  .hero-pillars-pause-btn {
+    width: 24px;
+    height: 24px;
+  }
+
+  .hero-pillars-marquee-viewport {
+    padding: 4px 0 6px 0;
   }
 
   .hero-pillar-item {
-    width: 275px;
-    padding: 8px 12px;
-    gap: 10px;
+    width: 240px;
+    padding: 6px 10px;
+    gap: 8px;
+    border-radius: 12px;
   }
 
   .hero-pillar-media {
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  .hero-pillar-text h4 {
+    font-size: 0.8rem;
+    margin-bottom: 1px;
+  }
+
+  .hero-pillar-text p {
+    font-size: 0.68rem;
+  }
+
+  .scroll-indicator {
+    display: none !important;
   }
 
   .highlights-grid,
   .academics-grid,
   .facilities-grid,
-  .gallery-grid,
   .notices-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  /* 2 Photos Display in a Row in Mobile View */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .gallery-item {
+    height: 140px !important;
+    border-radius: 12px !important;
+  }
+
+  .gallery-zoom-icon {
+    width: 28px !important;
+    height: 28px !important;
+    top: 8px !important;
+    right: 8px !important;
+  }
+
+  .gallery-zoom-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .gallery-item-overlay {
+    padding: 10px !important;
+  }
+
+  .gallery-item-category {
+    font-size: 0.56rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  .gallery-item-title {
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
   }
 
   .gallery-filters {
@@ -3178,13 +3305,21 @@ input, select, textarea {
     flex-shrink: 0;
   }
 
+  .about-image-wrapper {
+    position: relative;
+    margin-bottom: 12px;
+  }
+
   .about-image-accent {
     display: none !important;
   }
 
   .about-image-main {
-    height: 260px;
-    border-radius: var(--radius-md);
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 16px;
   }
 
   .about-floating-card {
@@ -3192,29 +3327,43 @@ input, select, textarea {
     right: auto !important;
     bottom: auto !important;
     left: auto !important;
-    margin: -24px auto 0 auto !important;
-    width: calc(100% - 20px) !important;
-    max-width: 100% !important;
-    padding: 16px 18px !important;
-    border-radius: var(--radius-md);
-    box-shadow: 0 12px 30px rgba(11, 25, 48, 0.4) !important;
+    margin: -24px auto 28px auto !important;
+    width: calc(100% - 24px) !important;
+    max-width: 360px !important;
+    padding: 14px 16px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 10px 28px rgba(11, 25, 48, 0.22) !important;
     z-index: 2;
+    background: var(--color-navy-900) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
   }
 
   .about-floating-card-icon {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 8px;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 6px;
+  }
+
+  .about-floating-card-icon svg {
+    width: 16px;
+    height: 16px;
   }
 
   .about-floating-card h4 {
-    font-size: 1.05rem;
-    margin-bottom: 4px;
+    font-size: 0.98rem;
+    margin-bottom: 3px;
   }
 
   .about-floating-card p {
-    font-size: 0.8125rem;
-    line-height: 1.45;
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .about-content {
+    margin-top: 6px;
   }
 
   .about-commitments {
@@ -3265,51 +3414,46 @@ input, select, textarea {
   }
 
   /* --------------------------------------------------------------------------
-     Compact & Streamlined Footer on Mobile (2-column layout + clearance for badges)
+     Compact & Streamlined Footer on Mobile
      -------------------------------------------------------------------------- */
   .footer {
-    padding-top: 36px !important;
-    padding-bottom: 96px !important; /* Prevents floating badge and back-to-top overlap */
+    padding-top: 22px !important;
+    padding-bottom: 65px !important; /* Proper clearance for floating badge and back-to-top */
   }
 
   .footer-top {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 22px 14px !important;
-    margin-bottom: 20px !important;
+    gap: 14px 10px !important;
+    margin-bottom: 12px !important;
   }
 
   .footer-col-brand {
     grid-column: span 2 !important;
     text-align: center;
-    padding-bottom: 12px;
+    padding-bottom: 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .footer-brand-crest {
-    width: 38px !important;
-    height: 38px !important;
-    margin: 0 auto 8px auto !important;
+    width: 28px !important;
+    height: 28px !important;
+    margin: 0 auto 4px auto !important;
     display: block;
   }
 
   .footer-brand-title {
-    font-size: 1.05rem !important;
-    margin-bottom: 6px !important;
+    font-size: 0.92rem !important;
+    margin-bottom: 2px !important;
     letter-spacing: 0.04em;
   }
 
   .footer-brand-desc {
-    font-size: 0.8125rem !important;
-    line-height: 1.45 !important;
-    margin-bottom: 8px !important;
-    max-width: 360px;
-    margin-left: auto;
-    margin-right: auto;
+    display: none !important; /* Hides repetitive long bio on mobile to save vertical space */
   }
 
   .footer-col-brand > div[style*="color: var(--color-gold-300)"] {
-    font-size: 0.75rem !important;
+    display: none !important;
   }
 
   .footer-col-links,
@@ -3318,84 +3462,84 @@ input, select, textarea {
   }
 
   .footer-title {
-    font-size: 0.9375rem !important;
-    margin-bottom: 10px !important;
-    padding-bottom: 5px !important;
+    font-size: 0.82rem !important;
+    margin-bottom: 6px !important;
+    padding-bottom: 3px !important;
   }
 
   .footer-title::after {
-    width: 20px !important;
-    height: 2px !important;
+    width: 16px !important;
+    height: 1.5px !important;
   }
 
   .footer-links {
-    gap: 7px !important;
+    gap: 4px !important;
   }
 
   .footer-links a {
-    font-size: 0.8rem !important;
-    line-height: 1.35 !important;
+    font-size: 0.74rem !important;
+    line-height: 1.25 !important;
     color: var(--color-slate-300);
   }
 
   .footer-col-contact {
     grid-column: span 2 !important;
-    padding-top: 10px;
+    padding-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .footer-contact-item {
-    font-size: 0.8rem !important;
-    margin-bottom: 6px !important;
-    gap: 8px !important;
-    line-height: 1.4 !important;
+    font-size: 0.74rem !important;
+    margin-bottom: 4px !important;
+    gap: 6px !important;
+    line-height: 1.3 !important;
   }
 
   .footer-contact-item svg {
-    width: 14px !important;
-    height: 14px !important;
+    width: 13px !important;
+    height: 13px !important;
     margin-top: 2px !important;
   }
 
   .footer-newsletter-text {
-    font-size: 0.8rem !important;
-    margin-bottom: 8px !important;
-    line-height: 1.4 !important;
+    display: none !important; /* Input placeholder is self-explanatory */
   }
 
   .footer-newsletter-form {
     display: flex;
     gap: 6px !important;
+    margin-top: 6px !important;
   }
 
   .footer-newsletter-input {
-    padding: 8px 10px !important;
-    font-size: 0.8rem !important;
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+    height: 32px !important;
   }
 
   .footer-newsletter-form .btn {
-    padding: 8px 12px !important;
-    font-size: 0.78rem !important;
+    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+    height: 32px !important;
     white-space: nowrap;
   }
 
   .footer-bottom {
-    padding-top: 16px !important;
+    padding-top: 10px !important;
     flex-direction: column !important;
     text-align: center !important;
-    gap: 10px !important;
-    font-size: 0.72rem !important;
+    gap: 6px !important;
+    font-size: 0.68rem !important;
   }
 
   .footer-admin-link {
     justify-content: center !important;
-    font-size: 0.75rem !important;
-    padding: 4px 10px !important;
+    font-size: 0.7rem !important;
+    padding: 3px 8px !important;
   }
 
   .footer-client-badge {
-    font-size: 0.72rem !important;
-    padding: 2px 10px !important;
+    display: none !important;
   }
 
   /* Institutional Citation Card on Mobile (Clean, Non-Scrollable & Prestigious) */
@@ -3590,12 +3734,31 @@ input, select, textarea {
     font-size: 0.875rem;
   }
 
+  .hero-section {
+    padding-top: 76px;
+    padding-bottom: 16px;
+  }
+
   .hero-title {
-    font-size: 1.65rem;
+    font-size: 1.35rem;
+    margin-bottom: 8px;
   }
 
   .hero-lead {
-    font-size: 0.84rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .hero-actions .btn {
+    padding: 8px 14px;
+    font-size: 0.8125rem;
+    min-height: 38px;
+  }
+
+  .hero-pillar-item {
+    width: 220px;
+    padding: 5px 8px;
   }
 
   .welcome-card-actions {
@@ -3611,17 +3774,31 @@ input, select, textarea {
   }
 
   .about-floating-card {
-    width: 100% !important;
-    margin: -14px 0 0 0 !important;
-    padding: 14px !important;
+    width: calc(100% - 16px) !important;
+    margin: -16px auto 22px auto !important;
+    padding: 12px 14px !important;
+  }
+
+  .gallery-grid {
+    gap: 8px !important;
+  }
+
+  .gallery-item {
+    height: 120px !important;
+    border-radius: 10px !important;
+  }
+
+  .footer {
+    padding-top: 18px !important;
+    padding-bottom: 60px !important;
   }
 
   .footer-top {
-    gap: 16px 10px !important;
+    gap: 10px 8px !important;
   }
 
   .footer-links a {
-    font-size: 0.75rem !important;
+    font-size: 0.72rem !important;
   }
 
   .best-school-floating-badge {
@@ -4393,36 +4570,180 @@ input, select, textarea {
   flex-shrink: 0;
 }
 
+
+/* Soft Shaded Light Background for Card 3 (Campus & Facilities) */
+.poster-card-campus {
+  background: #fbf7ee; /* Soft warm ivory / linen shade */
+}
+
+.poster-card-campus .poster-header-bar {
+  background: #f5eedc;
+  border-bottom: 1px solid #ebdcc0;
+}
+
+.poster-crest-amber {
+  border-color: #f59e0b;
+}
+
+.poster-sub-amber {
+  color: #b45309;
+}
+
+.poster-tag-amber {
+  background: #fef3c7;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.pulse-amber {
+  background: #d97706;
+}
+
+.poster-badge-warm {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.feat-amber {
+  background: #ffffff;
+  border-color: #fcd34d;
+  color: #b45309;
+}
+
+.poster-frame-amber {
+  border-color: #fde68a;
+  box-shadow: 0 10px 24px rgba(180, 83, 9, 0.08);
+  background: #ffffff;
+}
+
+.poster-hero-card3 {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.chip-amber {
+  background: #78350f;
+  border-color: #b45309;
+  color: #ffffff;
+}
+
+.poster-ribbon-amber {
+  background: #78350f;
+  color: #ffffff;
+}
+
+.poster-footer-amber {
+  background: #f5eedc;
+  border-top-color: #ebdcc0;
+  color: #334155;
+}
+
+.badge-amber {
+  background: #ffffff;
+  border-color: #fcd34d;
+  color: #92400e;
+}
+
+.poster-cta-amber {
+  background: #b45309;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(180, 83, 9, 0.25);
+}
+
+.poster-cta-amber:hover {
+  background: #92400e;
+  color: #ffffff !important;
+}
+
+/* Floating Pill Rotator Animation (Loops 3 Divs Through Whole Website - Strict Single Line) */
+.badge-pill-rotator {
+  position: relative;
+  height: 22px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.badge-pill-item {
+  display: none !important;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  line-height: 22px;
+}
+
+.badge-pill-item.active {
+  display: inline-flex !important;
+  animation: pillFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pillFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pill-emoji {
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.pill-text {
+  letter-spacing: 0.01em;
+}
+
+
 /* ==========================================================================
    Mobile Responsive Optimizations (< 640px)
+   Strictly Non-Scrollable, Perfectly Proportioned Cards
    ========================================================================== */
 @media (max-width: 640px) {
   .welcome-modal-overlay {
     padding: 10px;
     align-items: center;
+    justify-content: center;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
   }
 
   .poster-modal-wrapper {
-    max-width: 375px;
+    max-width: min(92vw, 365px);
     width: 100%;
-    padding: 6px 0 12px 0;
+    padding: 0;
+    margin: auto;
+    overflow: hidden !important;
   }
 
   .poster-modal-container {
     max-width: 100%;
-    border-radius: 20px;
+    border-radius: 18px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.22);
+    overflow: hidden !important;
   }
 
   .poster-slides-viewport {
-    border-radius: 20px;
-    min-height: auto;
-    max-height: calc(88vh - 54px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    border-radius: 18px;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: auto;
   }
 
   .poster-card {
-    min-height: auto;
+    min-height: auto !important;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
   }
 
   /* Hide navigation arrows on mobile so card sides stay clean */
@@ -4430,127 +4751,139 @@ input, select, textarea {
     display: none !important;
   }
 
-  /* Header Bar on Mobile */
+  /* Compact Header Bar on Mobile */
   .poster-header-bar {
-    padding: 10px 12px 8px 12px;
+    padding: 8px 12px 7px 12px;
     gap: 6px;
   }
 
   .poster-crest {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
 
   .poster-crest img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   .poster-brand-name {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     line-height: 1.1;
   }
 
   .poster-brand-sub {
-    font-size: 0.56rem;
+    font-size: 0.52rem;
   }
 
   .poster-header-tag {
-    font-size: 0.58rem;
-    padding: 2px 7px;
-    margin-right: 30px;
+    font-size: 0.52rem;
+    padding: 2px 6px;
+    margin-right: 28px;
     white-space: nowrap;
     letter-spacing: 0.02em;
   }
 
   .poster-modal-close {
-    top: 8px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
+    top: 7px;
+    right: 7px;
+    width: 26px;
+    height: 26px;
   }
 
   .poster-modal-close svg {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
   }
 
-  /* Main Content Area on Mobile */
+  /* Main Content Area: Side-by-Side Horizontal Balance on Mobile */
   .poster-content-area {
-    flex-direction: column;
-    padding: 8px 12px 10px 12px;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    gap: 6px;
+    justify-content: space-between;
+    padding: 8px 12px;
+    text-align: left;
+    gap: 10px;
   }
 
   .poster-copy-box {
-    max-width: 100%;
+    flex: 1;
+    max-width: 63%;
     margin-top: 0;
-    text-align: center;
+    text-align: left;
   }
 
   .poster-badge-yellow {
-    font-size: 0.62rem;
-    padding: 3px 8px;
-    margin-bottom: 4px;
-    letter-spacing: 0.05em;
+    font-size: 0.56rem;
+    padding: 2px 6px;
+    margin-bottom: 3px;
+    letter-spacing: 0.04em;
   }
 
   .poster-headline-white {
-    font-size: 1.28rem;
-    line-height: 1.2;
-    margin: 0 0 4px 0;
+    font-size: 1.05rem;
+    line-height: 1.18;
+    margin: 0 0 3px 0;
   }
 
   .poster-script-yellow {
-    font-size: 0.8rem;
-    margin-bottom: 6px;
-    line-height: 1.35;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .poster-features-list {
     display: none;
   }
 
-  /* Photo Showcase on Mobile */
+  /* Photo Showcase on Mobile: Crisp Framed Aspect */
   .poster-hero-image-wrap {
-    width: 160px;
-    height: 145px;
-    margin: 4px auto 6px auto;
+    width: 96px;
+    height: 108px;
+    margin: 0;
+    flex-shrink: 0;
   }
 
   .poster-img-frame {
-    border-radius: 14px;
+    border-radius: 12px;
     border-width: 2px;
   }
 
   .poster-img-floating-chip {
-    padding: 2px 7px;
-    font-size: 0.6rem;
-    bottom: 6px;
-    left: 6px;
+    padding: 2px 5px;
+    font-size: 0.52rem;
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .poster-img-floating-chip span:first-child {
+    font-size: 0.56rem;
   }
 
   /* Ribbon Bar on Mobile */
   .poster-ribbon-bar {
-    font-size: 0.58rem;
-    padding: 5px 8px;
-    margin: 0 10px 6px 10px;
+    font-size: 0.5rem;
+    padding: 3px 6px;
+    margin: 0 10px 5px 10px;
     gap: 4px;
     letter-spacing: 0.02em;
+    border-radius: 5px;
   }
 
   /* Footer Strip on Mobile */
   .poster-footer-strip {
-    font-size: 0.68rem;
-    padding: 8px 12px;
+    font-size: 0.64rem;
+    padding: 6px 10px;
     gap: 6px;
   }
 
   .poster-contact-item {
-    font-size: 0.68rem;
-    gap: 4px;
+    font-size: 0.64rem;
+    gap: 3px;
   }
 
   .poster-contact-item svg {
@@ -4563,25 +4896,25 @@ input, select, textarea {
   }
 
   .poster-cta-btn {
-    font-size: 0.7rem;
-    padding: 6px 12px;
+    font-size: 0.67rem;
+    padding: 5px 9px;
     border-radius: 6px;
   }
 
   /* Dedicated Dots Indicator on Mobile */
   .poster-dots {
-    margin-top: 10px;
-    padding: 4px 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 8px;
+    padding: 3px 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .poster-dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
   }
 
   .poster-dot.active {
-    width: 18px;
+    width: 16px;
   }
 
   .best-school-floating-badge {
@@ -4596,11 +4929,11 @@ input, select, textarea {
 /* Small Smartphone View (< 380px) */
 @media (max-width: 380px) {
   .poster-modal-wrapper {
-    max-width: 310px;
+    max-width: 316px;
   }
 
   .poster-header-bar {
-    padding: 8px 10px 6px 10px;
+    padding: 7px 8px 6px 8px;
   }
 
   .poster-brand-sub {
@@ -4608,37 +4941,41 @@ input, select, textarea {
   }
 
   .poster-header-tag {
-    font-size: 0.54rem;
-    padding: 2px 6px;
-    margin-right: 28px;
+    font-size: 0.48rem;
+    padding: 1px 5px;
+    margin-right: 24px;
   }
 
   .poster-headline-white {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  .poster-script-yellow {
+    font-size: 0.66rem;
   }
 
   .poster-hero-image-wrap {
-    width: 135px;
-    height: 125px;
+    width: 84px;
+    height: 96px;
   }
 
   .poster-ribbon-bar {
-    font-size: 0.52rem;
-    padding: 4px 6px;
+    font-size: 0.46rem;
+    padding: 2.5px 4px;
     margin: 0 6px 4px 6px;
   }
 
   .poster-footer-strip {
-    padding: 6px 10px;
+    padding: 5px 8px;
   }
 
   .poster-contact-item span {
-    font-size: 0.62rem;
+    font-size: 0.58rem;
   }
 
   .poster-cta-btn {
-    font-size: 0.64rem;
-    padding: 5px 8px;
+    font-size: 0.6rem;
+    padding: 4px 7px;
   }
 }
 
